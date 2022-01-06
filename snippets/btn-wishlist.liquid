@@ -1,0 +1,17 @@
+
+<style>
+.swym-button.swym-add-to-wishlist {
+  display: block !important;
+}
+</style>
+{% if customer %}
+  <button class="btn btn-transparent py-0 swym-button swym-add-to-wishlist product_{{ product.id }}" data-swaction="addToWishlist" data-product-id="{{product.id | json}}" >
+    <i aria-hidden="true" focusable="false" role="presentation" class="far fa-heart"></i>
+    <span class="sr-only">Add to Wishlist</span>
+  </button>
+{% else %}
+  <a href="/account/login" class="btn btn-transparent py-0">
+    <i aria-hidden="true" focusable="false" role="presentation" class="far fa-heart"></i>
+    <span class="sr-only">Add to Wishlist</span>
+  </a>
+{% endif %}

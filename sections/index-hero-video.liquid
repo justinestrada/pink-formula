@@ -1,0 +1,71 @@
+
+<section id="home-hero">
+  <div class="hero-container hero-video-container contianer-fluid">
+    <div class="video-wrapper" style="background-image: url('{{ section.settings.thumbnail | img_url: 'master' }}')">
+      <iframe class="hero-video" src="https://player.vimeo.com/video/{{ section.settings.vimeo_id }}?autoplay=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="hero-video-inner-container d-flex align-items-center justify-content-center">
+      <div class="text-center">
+        <h1 class="text-white font-weight-normal mb-lg-5 px-3">
+          {{ section.settings.title }}
+        </h1>
+        <div class="cta-btn-container flex-row d-none d-lg-flex justify-content-center align-items-center mx-auto" id="cta-btn">
+          <a href="{{ section.settings.hero_link1 }}" title="{{ "homepage.hero.link_title_part1" | t }}"  class="btn btn-primary d-flex align-items-center justify-content-center">
+            {{ "homepage.hero.link_title_part1" | t }}
+          </a>
+          <a href="{{ section.settings.hero_link2 }}" title="{{ "homepage.hero.link_title_part2" | t }}" class="btn btn-white d-flex align-items-center justify-content-center">
+            {{ "homepage.hero.link_title_part2" | t }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  class="cta-btn-container flex-row d-flex d-lg-none justify-content-center align-items-center" id="cta-btn">
+    <a href="{{ section.settings.hero_link1 }}" title="{{ "homepage.hero.link_title_part1" | t }}" class="btn btn-primary d-flex align-items-center justify-content-center">
+      {{ "homepage.hero.link_title_part1" | t }}
+    </a>
+    <a href="{{ section.settings.hero_link2 }}" title="{{ "homepage.hero.link_title_part2" | t }}" class="btn btn-white d-flex align-items-center justify-content-center">
+      {{ "homepage.hero.link_title_part2" | t }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Video",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "thumbnail",
+      "label": "Video Thumbnail"
+    },
+    {
+      "type": "text",
+      "id": "vimeo_id",
+      "label": "Vimeo ID",
+      "default": "343009653"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "url",
+      "id": "hero_link1",
+      "label": "Left Button Link"
+    },
+    {
+      "type": "url",
+      "id": "hero_link2",
+      "label": "Right Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Video",	
+      "category": "Layout"
+    }
+  ]
+}
+{% endschema %}

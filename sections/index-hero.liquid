@@ -1,0 +1,87 @@
+
+<section id="home-hero">
+  <div class="hero-container d-none d-lg-flex flex-column justify-content-center align-items-center text-center" style="background-image: url('{{ section.settings.background | img_url: 'master' }}')">
+    <h1 class="text-white font-weight-normal mb-lg-5 px-3">
+      {{ section.settings.title }}
+    </h1>
+    <div class="cta-btn-container flex-row d-none d-lg-flex justify-content-center align-items-center" id="cta-btn" >
+      <a href="{{ section.settings.hero_link1 }}" title="{{ section.settings.hero_left_button_text }}"  class="btn btn-primary d-flex align-items-center justify-content-center">
+        {{ section.settings.hero_left_button_text }}
+      </a>
+      <a href="{{ section.settings.hero_link2 }}" title="{{ section.settings.hero_right_button_text }}" class="btn btn-white d-flex align-items-center justify-content-center">
+        {{ section.settings.hero_right_button_text }}
+      </a>
+    </div>
+  </div>
+  <div id="hero-container_mobile" class="d-flex d-lg-none flex-column">
+    <div class="hero-container_mobile d-flex flex-column justify-content-end align-items-center text-center" style="background-image: url('{{ section.settings.mobile_background_1 | img_url: 'master' }}')">
+      <h1 class="text-white font-weight-normal">{{ section.settings.title }}</h1>
+    </div>
+    <div class="hero-container_mobile d-flex flex-column justify-content-start align-items-center text-center" style="background-image: url('{{ section.settings.mobile_background_2 | img_url: 'master' }}')">
+    </div>
+  </div>
+  <div  class="cta-btn-container flex-row d-flex d-lg-none justify-content-center align-items-center" id="cta-btn">
+    <a href="{{ section.settings.hero_link1 }}" title="{{ section.settings.hero_left_button_text }}" class="btn btn-primary d-flex align-items-center justify-content-center">
+      {{ section.settings.hero_left_button_text }}
+    </a>
+    <a href="{{ section.settings.hero_link2 }}" title="{{ section.settings.hero_right_button_text }}" class="btn btn-white d-flex align-items-center justify-content-center">
+      {{ section.settings.hero_right_button_text }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Desktop Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_1",
+      "label": "Mobile Background 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_2",
+      "label": "Mobile Background 2"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "url",
+      "id": "hero_link1",
+      "label": "Left Button Link"
+    },
+    {
+      "type": "text",
+      "id": "hero_left_button_text",
+      "label": "Left Button Text",
+      "default": "Discover"
+    },
+    {
+      "type": "url",
+      "id": "hero_link2",
+      "label": "Right Button Link"
+    },
+    {
+      "type": "text",
+      "id": "hero_right_button_text",
+      "label": "Left Button Text",
+      "default": "More"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",	
+      "category": "Layout"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,172 @@
+<section class="contact-page padding-top-md padding-bottom-lg" style="background-image: url('{{ 'contact_bg.jpg' | asset_url }}')">
+
+  <h1>{{ page.title }}</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 column contact_card">
+        <h2>{{ "contact.details.title" | t }}</h2>
+        <p>{{ "contact.details.description" | t }}</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <img class="img-fluid" src="{{ 'mail.svg' | asset_url }}">
+            </div>
+            <div class="contact-body">
+              <h3>{{ "contact.support.title" | t }}</h3>
+              <a href="{{ "contact.support.link" | t }}" title="{{ "contact.support.title" | t }}">
+                {{ "contact.support.description" | t }}
+              </a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <img class="img-fluid" src="{{ 'phone.svg' | asset_url }}">
+            </div>
+            <div class="contact-body">
+              <h3>{{ "contact.customer_service.title" | t }}</h3>
+              <a href="{{ "contact.customer_service.link" | t }}" title="{{ "contact.customer_service.title" | t }}">
+                {{ "contact.customer_service.description" | t }}
+              </a>
+              <p class="mb-0"><span itemprop="openingHours" content="Mo,Tu,We,Th,Fri 10:00-5:00">Monday - Friday 10am - 5pm ET</span></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <img class="img-fluid" src="{{ 'location.svg' | asset_url }}">
+            </div>
+            <div class="contact-body">
+              <h3>{{ "contact.location.title" | t }}</h3>
+              <a href="{{ "contact.location.link" | t }}" title="{{ "contact.location.title" | t }}"  target="_blank">
+                {{ "contact.location.description" | t }}
+              </a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <img class="img-fluid" src="{{ 'social.svg' | asset_url }}" />
+            </div>
+            <div class="contact-body">
+              <h3>
+                {{ "contact.social.title" | t }}
+              </h3>
+              <ul class="social-icons">
+                <li>
+                  <a href="{{ settings.social_instagram_link }}" title="{{ "contact.social.follow_us_on" | t }} Instagram" target="_blank">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span class="sr-only">Instagram</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ settings.social_facebook_link }}" title="{{ "contact.social.follow_us_on" | t }} Facebook" target="_blank">
+                    <i class="fab fa-facebook-square" aria-hidden="true"></i>
+                    <span class="sr-only">Facebook</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ settings.social_linkedin_link }}" title="{{ "contact.social.follow_us_on" | t }} LinkedIn" target="_blank">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    <span class="sr-only">LinkedIn</span>
+                  </a>
+                </li>
+                {% comment %}
+                <li>
+                  <a href="{{ settings.social_twitter_link }}" title="{{ "contact.social.follow_us_on" | t }} Twitter" target="_blank">
+                    <i class="fab fa-twitter-square"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ settings.social_pinterest_link }}" title="{{ "contact.social.follow_us_on" | t }} Pinterest" target="_blank">
+                    <i class="fab fa-pinterest"></i>
+                  </a>
+                </li>
+                {% endcomment %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 offset-lg-2 column contact_card">
+        <h2>{{ "contact.form.title" | t }}</h2>
+        <p>{{ "contact.form.description" | t }}</p>
+
+        {% form 'contact' %}
+
+          {% if form.posted_successfully? %}
+            <p class="form-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+
+          <div class="form-inputs">
+          
+            <div class="input-group input-group-dark">
+              <input type="text"
+                class="form-control"
+                name="contact[name]"
+                placeholder="{{ 'contact.form.name' | t }}*"
+                value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                required>
+            </div>
+
+            <div class="input-group input-group-dark">
+              <input type="email"
+                class="form-control"
+                name="contact[email]"
+                placeholder="{{ 'contact.form.email' | t }}*"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off"
+                required>
+            </div>
+
+            <div class="input-group input-group-dark">
+              <input type="tel"
+                class="form-control"
+                name="contact[phone]"
+                placeholder="{{ 'contact.form.phone' | t }}"
+                value="{% if form[phone] %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                pattern="[0-9\-]*">
+            </div>
+
+            <div class="input-group input-group-dark">
+              <input type="text"
+                class="form-control"
+                name="contact[order_number]"
+                placeholder="{{ 'contact.form.order_number' | t }}"
+                value="{% if form[order_number] %}{{ form[order_number] }}{% endif %}">
+            </div>
+
+            <div class="input-group input-group-dark">
+              <input type="text"
+                class="form-control"
+                name="contact[subject]"
+                placeholder="{{ 'contact.form.subject' | t }}*"
+                value="{% if form[subject] %}{{ form[subject] }}{% endif %}"
+                required>
+            </div>
+
+            <div class="input-group input-group-dark">
+              <input type="text"
+                class="form-control"
+                name="contact[comments]"
+                placeholder="{{ 'contact.form.comments' | t }}*"
+                value="{% if form[comments] %}{{ form[comments] }}{% endif %}"
+                required>
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <input type="submit" class="btn btn-primary w-100" value="{{ 'contact.form.submit' | t }}">
+          </div>
+
+        {% endform %}
+
+      </div>
+    </div>
+  </div>
+</section>

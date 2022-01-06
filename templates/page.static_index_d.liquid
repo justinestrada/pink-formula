@@ -1,0 +1,28 @@
+
+<div id="home-page_c">
+  <div class="hero-container d-flex flex-column justify-content-center align-items-center text-center" style="background-image: url('{{ 'home_hero_2.jpg' | asset_url }}')">
+    <h1 class="text-white font-weight-normal mb-md-5 px-3">Lorem Ipsum</h1>
+  </div>
+  <button class="btn btn-primary cta-btn-container cta-btn-fullwidth" id="cta-btn">Discover</button>
+  <div class="d-flex flex-column flex-md-row">
+    <div class="link-container d-flex justify-content-center align-items-center" style="background-image: url('{{ 'home_women.jpg' | asset_url }}')">
+      <button class="btn btn-link text-white d-flex flex-row align-items-center justify-content-center"><img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}" alt="Right arrow">
+        <div>Shop Women</div>
+      </button>
+    </div>
+    <div class="link-container d-flex justify-content-center align-items-center" style="background-image: url('{{ 'home_men.jpg' | asset_url }}')">
+      <button class="btn btn-link text-white d-flex flex-row align-items-center justify-content-center"><img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}" alt="Right arrow">
+        <div>Shop Men</div>
+      </button>
+    </div>
+  </div>
+  <div class="cta-container d-flex flex-column justify-content-center align-items-center text-white text-center" style="background-image: url('{{ 'contact_bg.jpg' | asset_url }}')">
+    <h2 class="pb-4 font-weight-normal">Lorem Ipsum</h2>
+    <p class="body-large pb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+    <button class="btn btn-link text-white d-flex flex-row align-items-center justify-content-center"><img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}" alt="Right arrow">
+      <div>Explore</div>
+    </button>
+  </div>
+</div>
+
+{% include 'back-to-top' %}

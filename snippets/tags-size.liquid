@@ -1,0 +1,67 @@
+
+
+{% comment %}
+Here, I am assuming that you have already assigned all variants as tags of a product. Because Shopify filter does not work with variant options.
+And, if you assigns all variants as tags you can not differentiate them from tags.
+
+Here I code that is working for 2 filters Size & Length (with mulitple options. ie mulitple sizes, multiple lengths, etc
+{% endcomment %}
+{% assign variant_sizes = "" %}
+{% assign variant_lengths = "" %}
+{% for product in collection.products %}
+  {% for variant in product.variants %}
+    {% if variant.available %}
+      {% assign pro_size = variant.option1 | strip %}
+      {% assign variant_sizes = variant_sizes | append: pro_size | append: ',' %}
+
+      {% assign pro_length = variant.option3 | strip %}
+      {% assign variant_lengths = variant_lengths | append: pro_length | append: ',' %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+{% assign variant_sizes = variant_sizes | split: ',' | uniq %}
+{% assign variant_lengths = variant_lengths | split: ',' | uniq %}
+
+{% comment %}
+  {% assign variant_sizes = variant_sizes | split: ',' | uniq | join: ', ' %}
+  {% assign variant_sizes = 'xxs, xs, s, m, l' | split: ',' %}
+  {% assign variant_lengths = variant_lengths | split: ',' | uniq | join: ', ' %}
+  {% assign length = 'Short, 3/4, 7/8, Long' | split: ',' %}
+{% endcomment %}
+
+{% if variant_sizes.size > 0 %}
+  {% assign selected_size = "" %}
+    <!-- <li>{{ 'All' | link_to:collection.url }}</li> -->
+  {% for t in variant_sizes %}
+    {% assign variant_size = t | strip %}
+    {% if current_tags contains variant_size %}
+      <div class="active {{ variant_size }} col-3">{{ variant_size | link_to_remove_tag: variant_size }}</div>
+      {% assign selected_size = variant_size %}
+      {% comment %}
+        {% elsif collection.all_tags contains variant_size %}
+      {% endcomment %}
+    {% else %}
+      <div class="{{ variant_size }} col-3">{{ variant_size | link_to_add_tag: variant_size }}</div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if variant_lengths.size > 0 %}
+  <ul>
+    <h5 class="filter-title">Length</h5>
+    {% assign selected_length = "" %}
+    <!-- <li>{{ 'All' | link_to:collection.url }}</li> -->
+    {% for t in variant_lengths %}
+      {% assign variant_length = t | strip %}
+      {% if current_tags contains variant_length %}
+        <li class="active">{{ variant_length | link_to_remove_tag: variant_length }}</li>
+        {% assign selected_length = variant_length %}
+      {% comment %}
+          {% elsif collection.all_tags contains variant_length %}
+      {% endcomment %}
+      {% else %}
+        <li>{{ variant_length | link_to_add_tag: variant_length }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}

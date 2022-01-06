@@ -1,0 +1,171 @@
+
+<footer class="bg-secondary">
+  <div class="row">
+    <div class="col-md-6 col-lg-3 col-xl-2 fs-1x mb-4 mb-lg-0">
+      <p class="mb-4 text-bold fs-1.125x">{{ 'layout.footer.column1_title' | t }}</p>
+      <a href="javascript:$zopim.livechat.window.show();" id="btn-live-chat" class="btn btn-primary w-100 px-1 mb-4">Live chat <span class="live-chat-status">[available]</span>&nbsp;<span class="bubble bubble-online"></span></a>
+      <a href="tel:+19295296333,101" class="btn btn-primary w-100 mb-4">Call</a>
+      <a href="mailto:services@p448.com" class="btn btn-primary w-100">Email</a>
+    </div>
+    <div class="col-md-6 col-lg-3 col-xl-3 offset-xl-1 fs-1x mb-4 mb-lg-0">
+      <p class="mb-4 text-bold fs-1.125x">{{ 'layout.footer.column2_title' | t }}</p>
+      <form id="klaviyo_subscribe" action="//manage.kmail-lists.com/subscriptions/subscribe"
+      data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+      method="GET" target="_blank" novalidate="novalidate">
+        <input type="hidden" name="g" value="UWFfwS"/>
+        <input type="hidden" name="$fields" value="$consent, First_Name, Last_Name"/>
+        <input type="hidden" name="$list_fields" value="$consent"/>
+        <div class="klaviyo_field_group klaviyo_form_actions">
+          <div class="row mb-2">
+            <div class="col-6 pr-2">
+              <div class="input-group input-group-white">
+                <input type="text" name="First_Name" placeholder="First Name" class="form-control bg-transparent" required/>
+              </div>
+            </div>
+            <div class="col-6 pl-2">
+              <div class="input-group input-group-white">
+                <input type="text" name="Last_Name" placeholder="Last Name" class="form-control bg-transparent" required/>
+              </div>  
+            </div>
+          </div>
+          <div class="input-group input-group-white">
+            <input type="email" name="email" placeholder="Email*" class="form-control bg-transparent" required/>
+          </div>
+          <div class="d-flex flex-row align-items-center py-3">
+            <input class="mr-2" type="checkbox" aria-label="Checkbox for following text input" id="confirm" name="confirm" required/>
+            <label for="confirm" class="mb-0 fs-0.75x">I confirm that I have read and understand the privacy policy</label>
+          </div>
+        </div>
+        <div class="klaviyo_messages">
+          <div class="success_message" style="display: none;"></div>
+          <div class="error_message" style="display: none;"></div>
+        </div>
+        <div class="klaviyo_form_actions">
+          <button type="submit" class="btn btn-primary w-100">Sign up</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-6 col-xl-5 offset-xl-1">
+      <div class="row">
+        <div class="col-lg-4 fs-1x mt-4 mt-md-0 d-none d-md-flex flex-column">
+          <p class="mb-4 text-bold fs-1.125x">
+            {{ 'layout.footer.column3_title' | t }}
+          </p>
+          <div class="d-flex flex-column fs-0.75x">
+            {% for link in linklists['footer-column-1'].links %}
+              <a href="{{ link.url }}" title="{{ link.title }}" class="pb-4">
+                {{ link.title }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-lg-4 fs-1x mt-4 mt-md-0 d-none d-md-flex flex-column">
+          <p class="mb-4 text-bold fs-1.125x">
+            {{ 'layout.footer.column4_title' | t }}
+          </p>
+          <div class="d-flex flex-column fs-0.75x">
+            {% for link in linklists['footer-column-2'].links %}
+              <a href="{{ link.url }}" title="{{ link.title }}" class="pb-4">
+                {{ link.title }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col mt-4 mt-md-0 d-flex d-md-none">
+          <div id="accordion" class="w-100">
+            <button class="btn btn-link collapsed fs-1.125x text-left w-100" data-toggle="collapse" data-target="#collapseSupport" aria-expanded="false" aria-controls="collapseSupport">{{ 'layout.footer.column3_title' | t }} <span class="expanded-icon">-</span><span class="collapsed-icon">+</span></button>
+            {% if section.settings.first_linklist %}
+              <div class="collapse mt-4" id="collapseSupport" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="d-flex flex-column fs-0.75x">
+                  {% for link in linklists[section.settings.first_linklist].links %}
+                    <a href="{{ link.url }}" title="{{ link.title }}" class="pb-4">
+                      {{ link.title }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col mt-4 mt-md-0 d-flex d-md-none">
+          <div id="accordion" class="w-100">
+            <button class="btn btn-link collapsed fs-1.125x text-left w-100" data-toggle="collapse" data-target="#collapseCompany" aria-expanded="false" aria-controls="collapseCompany">{{ 'layout.footer.column4_title' | t }} <span class="expanded-icon">-</span><span class="collapsed-icon">+</span></button>
+            {% if section.settings.second_linklist %}
+              <div class="collapse mt-4" id="collapseCompany" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="d-flex flex-column fs-0.75x">
+                  {% for link in linklists[section.settings.second_linklist].links %}
+                    <a href="{{ link.url }}" title="{{ link.title }}" class="pb-4">
+                      {{ link.title }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-4 fx-1x mt-4 mt-md-0 d-flex flex-row flex-lg-column justify-content-between justify-content-lg-start align-items-center">
+          <p class="mb-0 mb-lg-4 text-bold fs-1.125x">
+            {{ 'layout.footer.column5_title' | t }}
+          </p>
+          <div class="d-none d-lg-flex flex-column fs-0.75x">
+            <a href="{{ settings.social_instagram_link }}" title="{{ "contact.social.follow_us_on" | t }} Instagram" target="_blank" class="pb-4">
+              Instagram
+            </a>
+            <a href="https://www.tiktok.com/@p448official" title="{{ "contact.social.follow_us_on" | t }} TikTok" target="_blank" class="pb-4">
+              TikTok
+            </a>
+            <a href="{{ settings.social_facebook_link }}" title="{{ "contact.social.follow_us_on" | t }} Facebook" target="_blank" class="pb-4">
+              Facebook
+            </a>
+            <a href="{{ settings.social_linkedin_link }}" title="{{ "contact.social.follow_us_on" | t }} LinkedIn" target="_blank" class="pb-4">
+              LinkedIn
+            </a>
+          </div>
+          <div class="d-flex flex-row d-lg-none">
+            <div class="social-icon mx-3">
+              <a href="{{ settings.social_instagram_link }}" title="{{ "contact.social.follow_us_on" | t }} Instagram" target="_blank">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div class="social-icon mx-3">
+              <a href="https://www.tiktok.com/@p448official" title="{{ "contact.social.follow_us_on" | t }} Facebook" target="_blank" class="d-block" style="margin-top: -2px;">
+                {% include 'icon-tiktok' %}
+              </a>
+            </div>
+            <div class="social-icon mx-3">
+              <a href="{{ settings.social_facebook_link }}" title="{{ "contact.social.follow_us_on" | t }} Facebook" target="_blank">
+                <i class="fab fa-facebook-square" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div class="social-icon mx-3">
+              <a href="{{ settings.social_linkedin_link }}" title="{{ "contact.social.follow_us_on" | t }} LinkedIn" target="_blank">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "first_linklist",
+        "label": "First menu",
+        "default": "footer"
+      },
+      {
+        "type": "link_list",
+        "id": "second_linklist",
+        "label": "Second menu",
+        "default": "footer"
+      }
+    ]
+  }
+
+{% endschema %}

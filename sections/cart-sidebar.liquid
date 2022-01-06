@@ -1,0 +1,139 @@
+
+<style>
+/*
+ * TODO: Swym wishlist is injecting a wishlist heart in this sidecart for some reason, figure out why
+ */
+#cartSidebar .swym-button-bar.swym-wishlist-button-bar.swym-inject {
+  display: none;
+}
+</style>
+<div class="modal right fade" id="cartSidebar" tabindex="-1" role="dialog" aria-labelledby="cartSidebar" aria-hidden="true"
+  style="z-index: 10000;" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="bg-black text-center py-1">
+          {% comment %}{{ 'cart_sidebar.title' | t }}{% endcomment %}
+          <p class="my-cart-header text-white mb-0">{{ section.settings.title }}</p>
+        </div>
+        <form id="form-cart" method="post" action="/cart" {% if cart.item_count == 0 %} style="display: none;" {% endif %}>
+          <div class="cart-item-list">
+            {% for item in cart.items %}
+              <div class="cart-item row py-3" product-id="{{ item.id }}">
+                {% if item.image != blank %}
+                  <div class="cart-item-image-col col-auto">
+                    <img class="cart-item-thumbnail" src="{{ item.image | product_img_url: '1920x' }}" alt="{{ item.title }}"/>                
+                  </div>
+                {% endif %}
+                <div class="col pl-0">
+                  <div class="row mb-1">
+                    <div class="col">
+                      <a class="d-block text-black" href="{{ item.url }}" title="{{ item.title }}" >{{ item.product.title }}</a>   
+                      {% unless item.product.has_only_default_variant %}
+                        {{ item.variant.title }}
+                      {% endunless %}                         
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <p class="d-block mb-1" >
+                        {% if item.original_line_price != item.line_price %}
+                          <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                          <span class="cart-item-price d-block">{{ item.price | money }}
+                          <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                          <s class="cart-item-compare-price">{{ item.original_price | money }}</s>
+                        {% else %}
+                        <span class="cart-item-price">{{ item.price | money }}</span>
+                        {% endif %}                      
+                      </p>
+                      <a class="cart-item-remove d-inline-block text-danger fs-0.75" href="javascript:void(0);" remove-cart-line="{{ forloop.index }}" rel="{{ item.id }}" >
+                        <small>Remove</small>
+                      </a>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col px-0">
+                          <button type="button" class="btn btn-transparent px-0 w-100 cart-item-minus" remove-cart-line="{{ forloop.index }}" rel="{{ item.id }}" >-</button>
+                        </div>
+                        <div class="col-6 px-1">
+                          <div class="form-group mb-0">
+                            <input type="number" name="updates[]" class="form-control" value="{{ item.quantity }}" min="0" pattern="[0-9]*" />
+                          </div>
+                        </div>
+                        <div class="col px-0">
+                          <button type="button" class="col btn btn-transparent px-0 w-100 cart-item-plus">+</button>
+                        </div>
+                      </div>
+                    </div>                          
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="cart-totals pb-lg-4">
+            <table class="cart-sidebar-table table">
+              <div class="cart-errors alert alert-danger" style="display: none;"></div>
+              <!-- <tr>
+                <td>Apply coupon at checkout</td>
+                <td></td>
+              </tr> -->
+              <tr {% if cart.original_total_price == cart.total_price %} style="display: none;" {% endif %}>
+                <td>{{ 'cart.general.subtotal' | t }}</td>
+                <td class="cart-subtotal">{{ cart.original_total_price | money }}</td>
+              </tr>
+              <tr {% if cart.total_discounts == 0 %} style="display: none;" {% endif %}>
+                <td>{{ 'cart.general.savings' | t }}</td>
+                <td class="cart-savings text-right">{{ cart.total_discounts | money }}</td>
+              </tr>
+              <!-- <tr>
+                <td>{{ 'cart.general.shipping_at_checkout' | t }}</td>
+                <td></td>
+              </tr> -->
+              <tr>
+                <td>{{ 'cart.general.total' | t }}</td>
+                <td class="cart-total-price">{{ cart.total_price | money }}</td>
+              </tr>
+            </table>
+            <div class="row mb-1">
+              <div class="col">
+                <button type="submit" name="checkout" value="Checkout" class="primary-cta-container flex-row d-flex justify-content-center align-items-center">
+                  <span class="btn btn-primary d-flex align-items-center justify-content-center">
+                    {{ 'cart.general.checkout' | t }}
+                  </span>
+                  <span class="btn btn-black d-flex align-items-center justify-content-center">
+                    <i class="fa fa-smile" aria-hidde="true"></i>
+                    <span class="sr-only">Smile</span>
+                  </span>
+                </button>                
+              </div>
+            </div>
+            <div class="text-center mb-3">
+              <p class="cart-or-text mb-1" {% if cart.item_count <= 0 %}style="display: none;"{% endif %}><small>or</small></p>
+              <button type="button" data-dismiss="modal" class="btn btn-outline-primary" title="Continue Shopping" >Continue Shopping</button>
+            </div>
+          </div>
+        </form>
+        <div id="empty-cart-text" {% if cart.item_count > 0 %}style="display: none;"{% endif %}>
+          <div class="text-center">
+            <p>Your cart is currently empty.</p>
+            <button type="button" data-dismiss="modal" class="btn btn-outline-primary">Return to shop.</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Sidebar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Shopping Cart"
+    }
+  ]
+}
+{% endschema %}

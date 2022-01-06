@@ -1,0 +1,66 @@
+
+{% if section.settings.vimeo_id != '' %}
+  <section id="lookbook-hero">
+    <div class="hero-container hero-video-container contianer-fluid">
+      <div class="video-wrapper" style="background-image: url('{{ section.settings.thumbnail | img_url: 'master' }}')">
+        <iframe class="hero-video" src="https://player.vimeo.com/video/{{ section.settings.vimeo_id }}?autoplay=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <div class="hero-video-inner-container d-flex align-items-center justify-content-center">
+        <div class="text-center">
+          <h1 class="text-white font-weight-normal mb-lg-5 px-3">
+            {{ section.settings.title }}
+          </h1>
+          {% if section.settings.description %}
+            <p class="text-white fs-1.75x mt-3 px-2">{{ section.settings.description }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% else %}
+  <section class="image-with-text-inside" style="background-image: url('{{ section.settings.thumbnail | img_url: 'master' }}')">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="hero-content d-flex flex-column justify-content-center align-items-center text-center w-100">
+            <h1 class="loud">{{ section.settings.title }}</h1>
+            {% if section.settings.description %}
+              <p class="mt-3 px-2">{{ section.settings.description }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Hero Video",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "thumbnail",
+      "label": "Video Thumbnail"
+    },
+    {
+      "type": "text",
+      "id": "vimeo_id",
+      "label": "Vimeo ID",
+      "default": "383764185"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The Icons"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Description goes here"
+    }
+  ]
+}
+{% endschema %}

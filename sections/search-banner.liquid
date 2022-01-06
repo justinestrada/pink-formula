@@ -1,0 +1,87 @@
+
+<style>
+.input-group {
+  border-bottom: 2px solid #0c3df5;
+}
+</style>
+<header role="banner" class="container-fluid py-3">
+  <div class="row mb-3">
+    <div class="col-12 d-lg-none mb-3">
+      <h1 class="page-heading-sm mb-0">{{ 'general.search.title' | t }}</h1>
+    </div>
+    <div class="d-none d-lg-block col-lg-4 col-xl-3 offset-xl-1">
+      {% include 'back-btn' %}
+    </div>
+    <div class="d-none d-lg-flex col-lg-4 justify-content-center align-items-center">
+      <h1 class="page-heading-sm mb-0">{{ 'general.search.title' | t }}</h1>
+    </div>
+    <div class="col-lg-4 col-xl-3 text-right">
+      <form action="/search" method="get" role="search">
+        <div id="search-input-group" class="input-group">
+          <label for="search-input" class="label-hidden">
+            {{ 'general.search.placeholder' | t }}
+          </label>
+          <input type="search" name="q"
+            id="search-input"
+            class="form-control searchBar__input"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.placeholder' | t }}" required/>
+          <div class="input-group-append" >
+            <button type="submit" class="btn searchBar__icon">
+              <img src="{{ 'arrow-right-blue.svg' | asset_url }}" alt="Arrow Right" style="height: 2rem;" />
+              <span class="sr-only">Submit Search</span>
+            </button>           
+          </div>
+        </div>
+        <input type="hidden" name="post_type" value="product"/>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+    <h1 class="page-heading-sm mb-0">
+      {% if search.performed %}
+        <span class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}:</span>
+          {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+      {% else %}
+        {{ 'general.search.title' | t }}
+      {% endif %}
+    </h1>
+    </div>
+  </div>
+</header>
+{% if collection.all_tags.size > 0 %}
+<div id="filters" class="container" style="display: none;">
+  <ul class="tags tags-hidden d-none">
+    {% for tag in collection.all_tags %}
+    {% if current_tags contains tag %}
+    <li class="active">
+      {{ tag | link_to_remove_tag: tag }}
+    </li>
+    {% else %}
+    <li>
+      {{ tag | link_to_tag: tag }}
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  <div class="tags tags-shown row justify-content-center">
+    <div class="tags-category col-lg-4" style="display: none;">
+      <h5 class="mb-3">Sneakers Style</h5>
+      <div class="tag-cloud row"></div>
+    </div>
+    <div class="tags-collection col-lg-4" style="display: none;">
+      <h5 class="mb-3">Colors</h5>
+      <div class="tag-cloud row"></div>
+    </div>
+    <div class="tags-material col-lg-4" style="display: none;">
+      <h5 class="mb-3">Material</h5>
+      <div class="tag-cloud row"></div>
+    </div>
+    <!-- <div class="tags-type col-lg-4 text-center" style="display: none;">
+      <h5 class="mb-3">Type</h5>
+      <div class="tag-cloud row justify-content-center"></div>
+    </div> -->
+  </div>
+</div>
+{% endif %}

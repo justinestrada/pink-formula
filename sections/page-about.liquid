@@ -1,0 +1,174 @@
+
+<section class="image-with-text-inside {% if section.settings.hero_overlay %}image-with-text-inside__overlay{% endif %}" style="background-image: url('{{ section.settings.hero_image | img_url: 'master' }}')">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="hero-content">
+          <h1>{{ section.settings.hero_title }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="image-with-text h-lg-100vh">
+  <div class="container-fluid"> 
+    <div class="row flex-column flex-lg-row">
+      <div class="col-12 col-lg-6 image-column" style="background-image: url('{{ section.settings.left_column_image | img_url: 'master' }}')"></div>
+      <div class="col-12 col-lg-6 text-column bg-black">
+        <h2>{{ section.settings.right_column_text }}</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="image-with-text d-none d-lg-block">
+  <div class="d-flex flex-row">
+    <div class="d-col-12 col-lg-6 text-column">
+      <p>{{ section.settings.left_column_text_2 }}</p>
+    </div>
+    <div class="col-12 col-lg-6 image-column" style="background-image: url('{{ section.settings.right_column_image_2 | img_url: 'master' }}')">
+      <h2>{{ section.settings.right_column_text_2 }}</h2>
+    </div>
+  </div>
+</section>
+
+<section class="image-with-text slide-container d-block d-lg-none">
+  <div class="slider d-block d-lg-none"> 
+    <div class="slide-one" style="background-image: url('{{ section.settings.right_column_image_2 | img_url: 'master' }}')">
+      <h2>{{ section.settings.right_column_text_2 }}</h2>
+      <button id="slick-next" class="btn-icon align-self-center slide-btn_one">
+        <img src="{{ 'arrow-round-right.svg' | asset_url }}" alt="Right arrow">
+      </button>
+    </div>
+    <div class="slide-two text-column">
+      <p class="align-self-center">{{ section.settings.left_column_text_2 }}</p>
+      <button id="slick-prev" class="btn-icon align-self-center slide-btn_two">
+        <img class="left-arrow-btn" src="{{ 'arrow-round-right_primary.svg' | asset_url }}" alt="Left arrow">
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="text-with-image">
+  <div class="container-fluid"> 
+    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
+      <div class="text-column mr-lg-5">
+        <div>
+          <h2>{{ section.settings.section_title }}</h2>
+          <p>{{ section.settings.section_description }}</p>
+        </div>
+      </div>
+      <div class="img-container" style="background-image: url('{{ section.settings.section_image | img_url: 'master' }}')"></div>
+    </div>
+  </div>
+</section>
+
+<div class="hero-container about-hero-container about-bottom-hero-container d-flex flex-column justify-content-center align-items-center text-center">
+  <a href="{{ section.settings.cta_link }}" class="cta-btn-container flex-row d-none d-md-flex justify-content-center align-items-center" id="cta-btn">
+    <div class="btn btn-primary d-flex align-items-center justify-content-center">{{ section.settings.cta_left_text }}</div>
+    <div class="btn btn-white d-flex align-items-center justify-content-center">{{ section.settings.cta_right_text }}</div>
+  </a>
+</div>
+
+<a href="{{ section.settings.cta_link }}" class="cta-btn-container flex-row d-flex d-md-none justify-content-center align-items-center" id="cta-btn">
+  <div class="btn btn-primary d-flex align-items-center justify-content-center">{{ section.settings.cta_left_text }}</div>
+  <div class="btn btn-white d-flex align-items-center justify-content-center">{{ section.settings.cta_right_text }}</div>
+</a>
+
+<section class="loud-text d-none d-lg-block">
+  <h2>{{ section.settings.section_text }}</h2>
+</section>
+
+{% schema %}
+  {
+    "name": "About Page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Hero Image"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_title",
+        "label": "Hero Title",
+        "default": "P448 is a streetwear sneaker label; a truly contemporary brand whose collections are designed to empower the individual."
+      },
+      {
+        "type": "checkbox",
+        "id": "hero_overlay",
+        "label": "Hero Enable Overlay",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "left_column_image",
+        "label": "Left Column Image"
+      },
+      {
+        "type": "textarea",
+        "id": "right_column_text",
+        "label": "Right Column Text",
+        "default": "P448 seeks to unite. Inclusive and diverse, it is an evolution of the traditional family portrait and serves as an embodiment of contemporary culture."
+      },
+      {
+        "type": "textarea",
+        "id": "left_column_text_2",
+        "label": "Left Column Text 2",
+        "default": "Inspired by the power of the individual, we are an evolution of the traditional family portrait and serve as an embodiment of contemporary culture. Founded in 2014 by Marco Samorè and Andrea Curti, P448 is based on their shared philosophy of ‘mixing and matching’. This ethos drives everything from the style aesthetics to the team DNA. As the brand grew, Jacopo Barbieri and Giampaolo Ghirotti joined the team. The P448 family is a dynamic mix of individuals who are united by a collective consciousness."
+      },
+      {
+        "type": "image_picker",
+        "id": "right_column_image_2",
+        "label": "Right Column Image 2"
+      },
+      {
+        "type": "textarea",
+        "id": "right_column_text_2",
+        "label": "Right Column Text 2",
+        "default": "A sense of belonging is what connects us. We believe in the power of inclusivity."
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "All P448 products are all 100% made in Italy."
+      },
+      {
+        "type": "textarea",
+        "id": "section_description",
+        "label": "Section Description",
+        "default": "Each sneaker is conceived and manufactured by master craftsmen in the finest factories in Italy, using rich materials, thoughtful details and best-in-class workmanship. From the selection of materials, to the cutting of the leather, to the hand-stitching of the sole, every step of the production process is executed with meticulous attention to detail. Every P448 design is engineered to achieve perfection in both form and function. An expert team of skilled artisans is devoted to quality and comfort in both design and performance."
+      },
+      {
+        "type": "image_picker",
+        "id": "section_image",
+        "label": "Section Image"
+      },
+      {
+        "type": "url",
+        "id": "cta_link",
+        "label": "CTA Link"
+      },
+      {
+        "type": "text",
+        "id": "cta_left_text",
+        "label": "CTA Left Text",
+        "default": "Discover"
+      },
+      {
+        "type": "text",
+        "id": "cta_right_text",
+        "label": "CTA Right Text",
+        "default": "More"
+      },
+      {
+        "type": "textarea",
+        "id": "section_text",
+        "label": "Section Text",
+        "default": "Our goal is to break conventions and challenge assumptions."
+      }
+    ]
+  }
+{% endschema %}

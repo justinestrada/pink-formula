@@ -1,0 +1,54 @@
+
+<div class="container" id="press-page">
+  <h1 class="text-center pt-4 mb-4">Press</h1>
+  <div class="press-container mb-5 d-flex flex-column flex-lg-row flex-wrap">
+    {% unless blogs['press'].empty? or blogs['press'].articles.size == 0 %}
+        {% for article in blogs['press'].articles %}
+          <div class="d-flex press-card card">
+            <div class="card_img col-12 col-lg-6">
+              {% if article.image %}
+                <a href="{{ article.url }}">
+                  {% include 'responsive-image' with
+                    image: article.image,
+                    max_width: 1024,
+                    max_height: 1024
+                  %}
+                </a>
+              {% endif %}
+            </div>
+            <div class="card-body d-flex align-items-center">
+              <div>
+                <p class="sub-text">{{ article.published_at | date: "%B %e, %Y" }}</p>
+                <p class="sub-text font-weight-bold text-primary">
+                  {% if article.tags.size > 0 %}
+                    {% for tag in article.tags %}
+                      {{ tag }}{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                  {% endif %}
+                </p>
+                <a href="{{ article.url }}" class="card-title h2 text-secondary font-weight-bold">
+                  {{ article.title }}
+                </a>
+                <p class="card-text fs-1.25x">
+                  {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                  {% else %}
+                    <p>
+                      {{ article.content | strip_html | truncatewords: 100 }}
+                    </p>
+                  {% endif %}
+                </p>
+                <a class="btn btn-link d-flex flex-row align-items-center" href="{{ article.url }}"> 
+                  <img class="mr-3" src="{{ 'subdirectory-arrow-right_primary-blue.svg' | asset_url }}" alt="Right arrow">
+                  <span>Read More</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    {% endunless %}
+  </div>
+</div>
+
+{% include 'back-to-top-dark' %}
+   

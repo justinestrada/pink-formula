@@ -1,0 +1,402 @@
+{%- comment -%}
+This is a required section for the Shopify Theme Store.
+It is available in the "Header" section in the theme editor.
+
+Theme Store required settings
+- Show announcement
+- Text: message to announce
+- Link: link of the announcement bar
+
+Theme Store optional settings
+- Home page only: only shows on the home page
+{%- endcomment -%}
+
+<section data-section-id="{{ section.id }}" data-section-type="header" class="header__container">
+  <div class="header sticky-top">
+
+    {% if section.settings.announcement_bar_enabled %}
+    <div>
+      {% if section.settings.announcement_bar_home_page_only == false or template.name == 'index' %}
+        {% if section.settings.announcement_bar_link != blank -%}
+        <a href="{{ section.settings.announcement_bar_link }}">
+          <div class="text-center py-1 header__notification">{{ section.settings.announcement_bar_text | escape }}</div>
+        </a>
+        {% else %}
+          <div class="text-center py-1 header__notification">{{ section.settings.announcement_bar_text | escape }}</div>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="header__nav">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <a href="/" class="navbar-brand" id="logo">
+          <img src="{{ 'logo.svg' | asset_url }}" alt="{{ section.settings.logo.alt | default: shop.name }}" width="{{ section.settings.logo_max_width }}"/>
+        </a>
+        <div class="d-lg-none">
+          <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#cartSidebar" {% if template.name == 'cart' or cart.item_count == 0 %} style="display: none;" {% endif %}>
+            <span class="cart-has-items">{{ cart.item_count }}</span>
+            <img src="{{ 'shopping-bag.svg' | asset_url }}" alt="Cart" style="height: 28px; margin-top: -4px;"/>
+          </button>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span id="hamburger" class="navbar-toggler-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-4">
+            {% assign top_menu_counter = 0 %}
+              {% for link in linklists[section.settings.menu].links %}
+              <li class="nav-item mx-4">
+                <a class="nav-link {% if link.links != blank %}nav-link-has-children{% endif %}" href="{{ link.url }}"
+                  title="{{ link.title }}" data-child="nav-child-{{ top_menu_counter }}">
+                  {{ link.title }}
+                </a>
+              </li>
+              {% assign top_menu_counter = top_menu_counter | plus: 1 %}
+            {% endfor %}
+          </ul>
+          <div class="navbar__right">
+            <button type="button" class="btn btn-transparent my-2 my-sm-0" data-toggle="modal" data-target="#cartSidebar" {% if template.name == 'cart' or cart.item_count == 0 %} style="display: none;" {% endif %}>
+              <span class="cart-has-items">{{ cart.item_count }}</span>
+              {{ 'layout.cart.title' | t }}
+            </button>
+            <button class="btn my-2 my-sm-0" id="searchButton" type="button">Search<i class="fa fa-times ml-1" aria-hidden="true" style="display: none; position: relative; top: 1px;"></i></button>
+            {% if customer %}
+              <a href="/account" class="btn my-2 my-sm-0">My Account</a>
+            {% else %}
+              <button class="btn my-2 my-sm-0" id="myAccountBtn" type="button">My Account</button>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="header__searchBar py-5 hideContent searchBar" id="searchBar">
+      <form action="/search" method="GET" role="search">
+        <div class="input-group input-group-lg">
+          <input name="q" class="form-control searchBar__input" type="text" placeholder="{{ 'general.search.placeholder' | t }}" aria-describedby="inputGroup-sizing-lg" required/>
+          <input type="hidden" name="post_type" value="product"/>
+          <button type="submit" class="btn searchBar__icon">
+            <img src="{{ 'arrow-right.svg' | asset_url }}" alt="Arrow Right" style="height: 5rem;" />
+            <span class="sr-only">Submit Search</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="header__content--wrapper">
+      {% assign child_menu_counter = 0 %}
+      {% for link in linklists[section.settings.menu].links %}
+
+      <div class="nav-child-content container-fluid px-xl-5 hideContent" id="nav-child-{{ child_menu_counter }}">
+        <div class="row">
+          {% for sub_link in link.links %}
+            {% if sub_link.links == blank %}
+            <div class="col-lg-3 head__content--image">
+              <a href="{{ sub_link.url }}" title="{{ sub_link.title }}">
+                {% if sub_link.url == "/pages/world-of-p448" %}
+                  <div class="nav-image mb-3" style="background-image: url('{{ section.settings.menu_item_world_of_p448_image | img_url: 'large' }}');">
+                  </div>
+                {% elsif sub_link.url == "/pages/lookbook" %}
+                  <div class="nav-image mb-3" style="background-image: url('{{ section.settings.menu_item_lookbook_image | img_url: 'large' }}');">
+                  </div>
+                {% elsif sub_link.url == "/pages/music-unity" %}
+                  <div class="nav-image mb-3" style="background-image: url('{{ section.settings.menu_item_music_image | img_url: 'large' }}');">
+                  </div>
+                {% else %}
+                  <div class="nav-image mb-3" style="background-image: url('{{ sub_link.object.image.src | img_url: 'large' }}');">
+                  </div>
+                {% endif %}
+                <div class="mt-2 description">{{ sub_link.title }}</div>
+              </a>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% for sub_link in link.links %}
+          {% if sub_link.links != blank %}
+            <div class="divider"></div>
+            <div class="subNav my-3">
+              <div class="d-flex flex-row justify-content-between">
+                <span class="pl-0 mr-5 subNav__btn subNav__btn-first">Category</span>
+                {% for sub_sub_link in sub_link.links %}
+                <a class="btn pl-0 mx-5 subNav__btn" href="{{ sub_sub_link.url }}"
+                  title="{{ sub_sub_link.title }}">{{ sub_sub_link.title }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      </div>
+
+      {% assign child_menu_counter = child_menu_counter | plus: 1 %}
+      {% endfor %}
+
+    </div>
+
+    <div class="myAccount hideContent" id="myAccount">
+      <div class="top">
+        <p class="top__content">Create an account or login to view your orders,<br>return or adjust your personal information</p>
+      </div>
+      <div class="bottom d-flex">
+        <a href="/account/register" class="btn d-flex justify-content-center w-50 p-3">Create Account</a>
+        <a href="/account/login" class="btn btn-primary text-white d-flex justify-content-center w-50 p-3">Log in</a>
+      </div>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse mobileNav" id="navbarToggler">
+    <div class="mobileNav__content d-flex align-items-center">
+      <div class="mobileNav__innerMain">
+        <div id="mobileNav__navLinksCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              {% for link in linklists[section.settings.mobile-menu].links %}
+                <div class="text-center">
+                  {% if link.links.size > 0 %}
+                    <a href="javascript:void(0);" data-target="#mobileNav__navLinksCarousel" data-slide-to="{{ forloop.index }}" class="d-block mobileLinks py-4">{{ link.title }}</a>
+                  {% else %}
+                    <a href="{{ link.url }}" class="d-block mobileLinks py-4">{{ link.title }}</a>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+            {% for link in linklists[section.settings.mobile-menu].links %}
+              {% if link.links.size > 0 %}
+                <div class="carousel-item">
+                    <div class="navLinksCarousel__subNav container">
+                      <a href="javascript:void(0);" data-target="#mobileNav__navLinksCarousel" data-slide-to="0" class="d-block text-center fs-1.5x mb-3">
+                        <img class="moving-left mr-3" src="{{ 'arrow-round-back_primary-blue.svg' | asset_url }}" alt="Back to Previous">
+                        {{ link.title }}
+                      </a>
+                      <div class="row">
+                        {% for sub_link in link.links %}
+                          <diiv class="col-6">
+                            <div class="navLinksCarousel__subNav--image w-100">
+                              <a href="{{ sub_link.url }}" title="{{ sub_link.title }}">
+                                {% if sub_link.url == "/pages/world-of-p448" %}
+                                  <div class="nav-image mb-2" style="background-image: url('{{ section.settings.menu_item_world_of_p448_image | img_url: 'large' }}')">
+                                  </div>
+                                {% elsif sub_link.url == "/pages/lookbook" %}
+                                  <div class="nav-image mb-2" style="background-image: url('{{ section.settings.menu_item_lookbook_image | img_url: 'large' }}')">
+                                  </div>
+                                {% elsif sub_link.url == "/pages/music-unity" %}
+                                  <div class="nav-image mb-2" style="background-image: url('{{ section.settings.menu_item_music_image | img_url: 'large' }}')">
+                                  </div>
+                                {% else %}
+                                  <div class="nav-image mb-2" style="background-image: url('{{ sub_link.object.image.src | img_url: 'large' }}')">
+                                  </div>
+                                {% endif %}
+                                <h4 class="fs-1x font-weight-normal text-secondary mb-2">{{ sub_link.title }}</h4>
+                              </a>
+                            </div>
+                          </diiv>
+                        {% endfor %}
+                      </div>
+                    </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="mobileNav__searchBar">
+          <form action="/search" method="GET" role="search">
+            <div class="input-group input-group w-75 m-auto">
+              <input class="form-control searchBar__input fs-1x" type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-describedby="inputGroup-sizing"/>
+            </div>
+            <input type="hidden" name="post_type" value="product"/>
+            <div class="mobileNav__searchBtn text-center mt-1">
+              <button class="btn btn-transparent">
+                Search
+                {% include 'icon-arrow-right' %}
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="text-center">
+          {% if customer %}
+            <a href="javascript:void(0);" class="d-block mobileLinks py-5" data-myaccount-toggle>My Account</a>
+          {% else %}
+            <a href="/account/login" class="d-block mobileLinks py-5">My Account</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="mobileNav__innerMyAccount mobileNav__subNav h-100" style="display: none;">
+        {% form 'customer_login' %}
+          <div style="margin-top: -40%;">
+            {{ form.errors | default_errors }}
+            <div class="form-group">
+              <label for="CustomerEmail" class="label-hidden">
+                {{ 'customer.login.email' | t }}
+              </label>
+              <input type="email"
+                    name="customer[email]"
+                    id="CustomerEmail"
+                    class="form-control {% if form.errors contains 'email' %}input-error{% endif %}"
+                    placeholder="{{ 'customer.login.email' | t }}"
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    autofocus required/>
+            </div>
+            {% if form.password_needed %}
+              <div class="form-group mb-3">
+                <label for="CustomerPassword" class="label-hidden">
+                  {{ 'customer.login.password' | t }}
+                </label>
+                <input type="password"
+                        name="customer[password]"
+                        id="CustomerPassword"
+                        class="form-control {% if form.errors contains 'password' %}input-error{% endif %}"
+                        placeholder="{{ 'customer.login.password' | t }}" required/>
+              </div>
+              <div class="text-center">
+                <a href="#recover" class="text-secondary" data-recover-toggle>{{ 'customer.login.forgot_password' | t }}</a>
+              </div>
+            {% endif %}
+          </div>
+          <div class="bottom">
+            <p class="m-5">Create an account or login to view your orders, return or adjust your personal information</p>
+            <div class="cta-btn-container d-flex">
+              <a href="/account/register" class="btn d-flex justify-content-center w-50 p-3">Create Account</a>
+              <!-- <a href="/account/login" class="">Sign in</a> -->
+              <button type="submit" class="btn btn-primary text-white d-flex justify-content-center w-50 p-3" value="{{ 'customer.login.sign_in' | t }}">{{ 'customer.login.sign_in' | t }}</button>  
+            </div>
+          </div>
+          {% comment %}
+          <a href="/">{{ 'customer.login.cancel' | t }}</a>
+          <a href="/account/register">
+            {{ 'layout.customer.create_account' | t }}
+          </a>
+          {% endcomment %}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "announcement_bar_enabled",
+      "label": "Show announcement",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "announcement_bar_home_page_only",
+      "label": "Show on home page only",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_bar_text",
+      "label": "Announcement text",
+      "default": "Announce something here"
+    },
+    {
+      "type": "url",
+      "id": "announcement_bar_link",
+      "label": "Announcement link",
+      "info": "Optional"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 50,
+      "max": 450,
+      "step": 10,
+      "unit": "px",
+      "label": "Custom logo width",
+      "default": 250
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "mobile-menu",
+      "label": "Mobile Menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_item_world_of_p448_image",
+      "label": "Menu Item World of P448 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_item_lookbook_image",
+      "label": "Menu Item Lookbook image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_item_music_image",
+      "label": "Menu Item Music image"
+    }
+  ]
+}
+{% endschema %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+  {% endif %}
+  "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+  ],
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}

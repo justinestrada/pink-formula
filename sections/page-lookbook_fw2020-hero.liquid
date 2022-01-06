@@ -1,0 +1,40 @@
+
+<section class="image-with-text-inside" style="background-image: url('{{ section.settings.background | img_url: 'master' }}')">
+  <div class="overlay">
+    <div class="container">
+      <div class="row">
+        <div class="hero-content d-flex flex-column justify-content-center align-items-center text-center w-100">
+          <h1 class="loud">{{ section.settings.title }}</h1>
+          {% if section.settings.description %}
+            <p class="mt-3 px-2">{{ section.settings.description }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FW2020"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Description goes here"
+    }
+  ]
+}
+{% endschema %}

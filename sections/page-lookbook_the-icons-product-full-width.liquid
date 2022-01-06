@@ -1,0 +1,23 @@
+
+
+
+<section id="collection-products" class="container-fluid">
+  <div class="collection-products row">
+    {% assign product = all_products[ section.settings.featured_product ] %}
+    {% assign collection_product_column = 'col-lg-12' %}
+    {% include 'collection-product' %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Full Width Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured Product"
+    }
+  ]
+}
+{% endschema %}

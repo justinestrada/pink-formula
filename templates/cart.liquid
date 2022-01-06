@@ -1,0 +1,166 @@
+
+{% section 'cart-banner' %}
+
+<section class="py-5 cart-page"><!-- padding-top-lg padding-bottom-lg -->
+  <div class="container">
+    {% if cart.item_count > 0 %}
+      <form action="/cart" method="post" class="row" novalidate>
+        <div class="col-lg-8 mb-3 mb-lg-0">
+          <div class="card mb-3">
+            <div class="card-body">
+              {% for item in cart.items %}
+                <div class="cart-item row">
+                  {% if item.image != blank %}
+                    <div class="cart-item-image-col col-auto" data-label="{{ 'customer.order.product' | t }}">
+                      <a href="{{ item.url | within: collections.all }}">
+                        {{ item | img_url: '128x128' | img_tag: item.title }}
+                      </a>
+                    </div>
+                  {% endif %}
+                  <div class="col d-md-flex align-items-md-center pr-0">
+                    <p class="mb-1">
+                      <a href="{{ item.url }}" class="mb-1">{{ item.product.title }}</a>
+                      {% unless item.product.has_only_default_variant %}
+                        {{ item.variant.title }}
+                      {% endunless %}
+                    </p>
+                    {% comment %}
+                    <p>{{ item.vendor }}</p>
+                    {% endcomment %}
+                    {%- assign property_size = item.properties | size -%}
+                    {% if property_size > 0 %}
+                      {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                        {{ p.first }}:
+                        {% if p.last contains '/uploads/' %}
+                          <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                        {% else %}
+                          {{ p.last }}
+                        {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+                    {% endif %}
+                    <p class="d-md-none mb-1">
+                      {% if item.original_line_price != item.line_price %}
+                        <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                        {{ item.price | money }}
+                        <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                        <s>{{ item.original_price | money }}</s>
+                      {% else %}
+                        {{ item.price | money }}
+                      {% endif %}
+                      {% if item.line_level_discount_allocations.size > 0 %}
+                        {% for discount_allocation in item.line_level_discount_allocations %}
+                          <span class="d-block"><i class="fa fa-tag" aria-hidden="true"></i><span class="sr-only">Discount</span> {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})</span>
+                        {% endfor %}
+                      {% endif %}
+                    </p>
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="text-danger d-md-none">
+                      <small>{{ 'cart.general.remove' | t }}</small>
+                    </a>
+                  </div>
+                  <div class="col-auto col-md d-flex align-items-center justify-content-center" data-label="{{ 'cart.label.quantity' | t }}">
+                    <div class="form-group">
+                      <label for="updates_{{ item.key }}" class="d-none">Quantity</label>
+                      <input type="number" name="updates[]" id="updates_{{ item.key }}" class="form-control" value="{{ item.quantity }}" min="0" aria-label="{{ 'cart.general.item_quantity' | t }}" style="width: 56px;"/>
+                    </div>
+                  </div>
+                  <div class="d-none d-md-flex col-auto col-md align-items-center" data-label="{{ 'cart.label.total' | t }}">
+                    <div class="w-100 text-right">
+                      {% if item.original_line_price != item.line_price %}
+                        <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                        <span class="d-block">{{ item.price | money }}</span>
+                        <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                        <s>{{ item.original_price | money }}</s>
+                      {% else %}
+                        {{ item.price | money }}
+                      {% endif %}
+                      {% if item.line_level_discount_allocations.size > 0 %}
+                        {% for discount_allocation in item.line_level_discount_allocations %}
+                          <span class="d-block"><i class="fa fa-tag" aria-hidden="true"></i><span class="sr-only">Discount</span> {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})</span>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="d-none d-md-flex col-auto align-items-center">
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="text-danger">
+                      <small>{{ 'cart.general.remove' | t }}</small>
+                    </a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <input type="submit" name="update" class="btn btn-outline-primary" value="{{ 'cart.general.update' | t }}"/>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              {% if settings.cart_notes_enable %}
+                <div class="form-group">
+                  <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                  <textarea name="note" id="CartSpecialInstructions" class="form-control">{{ cart.note }}</textarea>  
+                </div>
+              {% endif %}
+              <table class="table">
+                <tr>
+                  <td>Apply coupon at checkout</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>{{ 'cart.general.subtotal' | t }}</td>
+                  <td class="text-right">{{ cart.original_total_price | money }}</td>
+                </tr>
+                {% if cart.total_discounts > 0 %}
+                  <tr>
+                    <td>{{ 'cart.general.savings' | t }}</td>
+                    <td class="text-right">
+                      {{ cart.total_discounts | money }}
+                      {% comment %}
+                      {% if cart.cart_level_discount_applications != blank %}
+                        Discounts:
+                        <ul>
+                          {% for discount_application in cart.cart_level_discount_applications %}
+                            <li>{{- discount_application.title -}}
+                            -{{ discount_application.total_allocated_amount | money }}</li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                      {% endcomment %}
+                    </td>
+                  </tr>
+                {% endif %}
+                <tr>
+                  <td>{{ 'cart.general.shipping_at_checkout' | t }}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>{{ 'cart.general.total' | t }}</td>
+                  <td>{{ cart.total_price | money }}</td>
+                </tr>
+              </table>
+              {% comment %}
+              <input type="submit" name="checkout" class="btn btn-primary" value="{{ 'cart.general.checkout' | t }}"/>
+              {% endcomment %}
+              <button type="submit" name="checkout" class="primary-cta-container flex-row d-flex justify-content-center align-items-center">
+                <span class="btn btn-primary d-flex align-items-center justify-content-center">
+                  {{ 'cart.general.checkout' | t }}
+                </span>
+                <span class="btn btn-black d-flex align-items-center justify-content-center">
+                  <i class="fa fa-smile" aria-hidde="true"></i>
+                  <span class="sr-only">Smile</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {% else %}
+      <div class="text-center">
+        <p>{{ 'cart.general.empty' | t }}</p>
+        <!-- <p>{{ 'cart.general.continue_browsing_html' | t }}</p> -->
+        <a href="/collections/all" class="btn btn-outline-primary">Return to shop.</a>
+      </div>
+    {% endif %}
+  </div>
+</section>

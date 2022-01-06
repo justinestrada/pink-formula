@@ -1,0 +1,98 @@
+
+{% comment %}
+
+Dynamic Size Chart - work in progress
+
+{% endcomment %}
+
+<style>
+.table thead th
+.uk-table th {
+  background: black;
+  color: white;
+}
+.uk-table th {
+    padding: 16px 12px;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: .875rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.uk-table-striped tbody tr:nth-of-type(odd), .uk-table-striped>tr:nth-of-type(odd) {
+    background: #f8f8f8;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.uk-table td, .uk-table th {
+    padding: 6px 10px;
+}
+
+.uk-table td {
+    padding: 16px 12px;
+    vertical-align: top;
+}
+</style>
+
+<table id="size-chart" class="uk-table  uk-table-divider uk-table-striped table">
+  <thead>
+    <tr>
+
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<script>
+  // tableheadings
+  // tabledata
+const headings = [
+  "EU",
+  "US WOMEN",
+  "US MEN",
+  "UK"
+];
+const sizes = [
+  {
+    "EU": 35,
+    "US WOMEN": "5 - 5.5",
+    // "US MEN": false,
+    "UK": 2,
+  },
+  {
+    "EU": 36,
+    "US WOMEN": "6 - 6.5",
+    // "US MEN": false,
+    "UK": 3,
+  },
+  {
+    "EU": 37,
+    "US WOMEN": 7,
+    // "US MEN": false,
+    "UK": 4,
+  },
+  {
+    "EU": 37,
+    "US WOMEN": 7,
+    // "US MEN": false,
+    "UK": 4,
+  },
+  {
+    "EU": 37,
+    "US WOMEN": 7,
+    // "US MEN": false,
+    "UK": 4,
+  }
+];
+
+jQuery(document).ready( () => {
+  $size_chart_thead = $('#size-chart thead tr');
+
+  headings.forEach( (heading_str) => {
+    const heading = (heading_str === 'EU') ? '<th><strong>' + heading_str + '</strong><th>' : '<th>' + heading_str + '<th>';
+    $size_chart_thead.append(heading);
+  })
+  sizes.forEach( (size) => {
+
+  });
+});
+</script>

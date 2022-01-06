@@ -1,0 +1,18 @@
+{
+  "homepage": {
+    "hero": {
+      "title": "Autunno \/ Inverno 2020",
+      "link_title_part1": "Scopri",
+      "link_title_part2": "Altro",
+      "link": "\/collezioni\/"
+    },
+    "onboarding": {
+      "blog_title": "Il titolo del tuo post",
+      "blog_excerpt": "Il tuo negozio non ha ancora pubblicato alcun post sul blog. Un blog può essere utilizzato per parlare del lancio di nuovi prodotti, consigli o altre notizie che vuoi condividere con i tuoi clienti. Potete consultare il blog di e-commerce di Shopify per trovare ispirazione e consigli per il vostro negozio e il vostro blog.",
+      "blog_author": "Nome dell'autore",
+      "product_title": "Esempio Titolo del prodotto",
+      "collection_title": "Esempio di titolo della collezione",
+      "no_content": "Questa sezione non include attualmente alcun contenuto. Aggiungere contenuti a questa sezione utilizzando la barra laterale."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+
+<section class="loud-text" style="background-color: {{ section.settings.background_color }}">
+  <h2 style="color: {{ section.settings.text_color }}">{{ section.settings.description }}</h2>
+</section>
+
+{% schema %}
+{
+  "name": "Loud",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#0c3df5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "To cross borders, break conventions and challenge assumptions."
+    }
+  ]
+}
+{% endschema %}

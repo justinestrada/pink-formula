@@ -1,0 +1,44 @@
+
+<style>
+#lookbook_single .three-column .loud-text h2 {
+  font-size: {{ section.settings.font_size }};
+}
+@media (min-width: 768px) {
+  #lookbook_single .three-column .loud-text h2 {
+    font-size: 1.875rem;
+  }  
+}
+</style>
+<section class="three-column container-fluid">
+  <div class="row">
+    <div class="col-md secondary-img" style="background-image: url('{{ section.settings.first_column_image | img_url: 'master' }}')"></div>
+    <div class="col-md loud-text loud-text-black d-md-flex align-items-center">
+      <h2>{{ section.settings.description }}</h2>
+    </div>
+    <div class="col-md secondary-img" style="background-image: url('{{ section.settings.last_column_image | img_url: 'master' }}')"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Three Columns",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "first_column_image",
+      "label": "First Column Image"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "The Luke White/Orange is unique by its transparent orange colored PVC details."
+    },
+    {
+      "type": "image_picker",
+      "id": "last_column_image",
+      "label": "Last Column Image"
+    }
+  ]
+}
+{% endschema %}

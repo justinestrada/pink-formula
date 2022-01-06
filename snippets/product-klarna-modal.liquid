@@ -1,0 +1,45 @@
+
+<style>
+.payment-icon--klarna {
+  display: inline-block;
+  background-image: url('https://cdn.shopify.com/s/assets/payment_icons/klarna-389801c6056cb5600b4f05f72ebc2c58e4947688c6c4f5e6ccea41f7973d3a28.svg');
+  border-radius: 0.25rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 2.5rem;
+  height: 1.5rem;
+  position: relative;
+  top: 8px;
+}
+</style>
+<div class="modal fade" id="klarnaModal" tabindex="-1" role="dialog" aria-labelledby="klarnaModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title text-secondary" id="klarnaModalLabel">Klarna</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col text-secondary">
+            {% if product.compare_at_price_max > product.price %}
+              <h4>Pay 4 installments of {{ product.price | divided_by: 4.0 | money }} <s>{{ product.compare_at_price_max | divided_by: 4.0 | money }}</s></h4>
+            {% else %}
+              <h4>Pay 4 installments of {{ product.price | divided_by: 4.0 | money }}</h4>
+            {% endif %}
+            <p>Pay in 4 interest-free installments so you can spread the cost.</p>
+            <ul>
+              <li class="mb-2">Add item(s) to your cart</li>
+              <li class="mb-3">Go to checkout and choose <span class="payment-icon payment-icon--klarna" data-payment-icon="klarna"><span class="visually-hidden">, </span></span></li>
+              <li class="mb-3">Enter your debit or credit card information</li>
+              <li class="mb-3">Pay later in 4 installments. The first payment is taken when the order is processed and the remaining 3 are automatically taken every two weeks.</li>
+            </ul>
+            <small>Please note that a higher initial payment may be required for some purchases. More information in the Pay later in 4 installments <a href="https://cdn.klarna.com/1.0/shared/content/legal/terms/0/en_us/sliceitinx" target="_blank" title="Klarna Terms">terms</a>. For CA residents loans made or arranged pursuant to a California Finance Lenders Law license.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

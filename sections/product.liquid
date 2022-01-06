@@ -1,0 +1,318 @@
+{% comment %} Setup Product Description {% endcomment %}
+{% assign combine_pretext = false %}
+
+{% assign description = tabbed-description | default: product.description %}
+{% if description contains "<h3>" %}
+  {% assign tab_heads = '' %}
+  {% assign tab_texts = '' %}
+  {% assign pretext = '' %}
+
+  {% assign chunks = description | strip | split: "<h3>" %}
+  {% for c in chunks %}
+    {% if c contains "</h3>" %}
+      {% assign chunk = c | split: "</h3>" %}
+      {% assign tab_heads = tab_heads | append: ",," | append: chunk.first %}
+      {% assign tab_texts = tab_texts | append: ",," %}
+      {% if pretext != blank  and combine_pretext %}
+        {% assign tab_texts = tab_texts | append: pretext | append: "<br>" %}
+        {% assign pretext = '' %}
+      {% endif %}
+      {% assign tab_texts = tab_texts | append: chunk.last  %}
+    {% elsif forloop.first %}
+      {% assign pretext =  c %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign tab_heads = tab_heads | remove_first: ",," | split: ",," %}
+  {% assign tab_texts = tab_texts | remove_first: ",," | split: ",," %}
+{% else %}
+  {% assign pretext = product.description %}
+{% endif %}
+
+{% comment %} if Product has tag Promotions: Pre-order {% endcomment %}
+{% assign is_preorder = false %}
+{% for tag in product.tags %}
+  {% if tag contains 'Promotions: Pre-order' %}
+    {% assign is_preorder = true %}
+  {% endif %}
+{% endfor %}
+
+{% assign in_accessories_collection = false %}
+{% for collection in product.collections %}
+  {% if in_accessories_collection == false and collection.title == 'Accessories' %}
+    {% assign in_accessories_collection = true %}
+  {% endif %}
+{% endfor %}
+
+<!-- Hidden product coollections - to use with javascript -->
+<ul id="product-collections" class="d-none">
+  {% for collection in product.collections %}
+    <li>{{ collection.title }}</li>
+  {% endfor %}
+</ul>
+
+<p id="product-type" class="d-none">{{ product.type }}</p>
+
+<style>
+.country-toggle-mobile-text {
+  letter-spacing: initial;
+  text-transform: initial;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  font-weight: 400;
+  color: #0f0f0f;
+  font-size: 0.875rem;
+}
+</style>
+
+<section id="product-single" data-section-id="{{ section.id }}" data-section-type="product" class="pt-0"><!-- padding-top-lg padding-bottom-lg -->
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <div class="container-fluid position-relative">
+    <div class="product-title__mobile text-center d-lg-none">
+      <h1>{{ product.title }}</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 p-0">
+        {% if product.images.size > 1 %}
+          {% for media in product.media %}
+            {% include 'product-media' %}
+            {% if forloop.index == 1 %}
+              <div class="d-lg-none row mx-0">
+                <div class="mobile-product-content col pt-4">
+                  <div class="insert-klarna-here">
+                    {% if product.compare_at_price_max > product.price %}
+                      <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }} <s>{{ product.compare_at_price_max | divided_by: 4.0 | money }}</s>. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
+                    {% else %}
+                      <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }}. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
+                    {% endif %}
+                  </div>
+                  <div class="product-long-description mb-4">
+                    {{ pretext }}
+                  </div>
+                  <nav class="mb-4">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      {% for head in tab_heads %}
+                        <a class="nav-item nav-link {% if forloop.index == 1 %} active {% endif %}" id="nav-{{ forloop.index }}-tab" data-toggle="tab" href="#nav-{{ forloop.index  }}" role="tab" aria-controls="nav-{{ forloop.index  }}" aria-selected="{% if forloop.index == 1 %}true{% else %}false{% endif %}">{{ head }}<span class="icon plus">+</span><span class="icon minus">-</span></a>
+                      {% endfor %}
+                      <a class="nav-item nav-link" id="nav-shipping-returns-tab" data-toggle="tab" href="#nav-shipping-returns" role="tab" aria-controls="nav-shipping-returns" aria-selected="false">Shipping and Returns<span class="icon plus">+</span><span class="icon minus">-</span></a>
+                      {% unless in_accessories_collection %}
+                        <a class="nav-item nav-link" id="nav-size-chart-tab" data-toggle="tab" href="#nav-size-chart" role="tab" aria-controls="nav-size-chart" aria-selected="false">Size Chart<span class="icon plus">+</span><span class="icon minus">-</span></a>
+                      {% endunless %}
+                    </div>
+                  </nav>
+                  <div class="tab-content mb-4" id="nav-tabContent">
+                    {% for head in tab_heads %}
+                      {% assign this_index = forloop.index | minus: 1 %}
+                      {% assign accordion_content = tab_texts[ this_index ]  %}
+                      <div class="tab-pane fade show {% if forloop.index == 1 %} active {% endif %}" id="nav-{{ forloop.index  }}" role="tabpanel" aria-labelledby="nav-{{ forloop.index  }}-tab">
+                        {{ accordion_content }}
+                      </div>
+                    {% endfor %}
+                    <div class="tab-pane fade" id="nav-shipping-returns" role="tabpanel" aria-labelledby="nav-shipping-returns-tab">
+                      {{ section.settings.shipping_returns }}
+                    </div>
+                    {% unless in_accessories_collection %}
+                      <div class="tab-pane fade" id="nav-size-chart" role="tabpanel" aria-labelledby="nav-size-chart-tab">
+                        {% include 'size-chart-static' %}
+                      </div>
+                    {% endunless %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="col-lg-6 col-xl-4 offset-xl-1">
+        <div class="product-body"><!--  d-flex align-items-center -->
+          <div class="inner-product-body">
+            <div class="d-none d-lg-block">
+              <div class="mb-4">
+                {% include 'btn-wishlist' %}
+              </div>
+              <h1 class="mb-4">{{ product.title }}</h1>
+              {% comment %} Inventory tracking on product page 
+              <div id="variant-inventory" class="{% unless current_variant.available %} hide {% endunless %}">
+                {{ current_variant.inventory_quantity }} in stock.
+              </div>
+              {% endcomment %}
+              <div class="product-long-description mb-4">
+                {{ pretext }}
+              </div>
+            </div>
+            {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+              {% comment %}{{ product.variants.first.id }}{% endcomment %}
+              <input type="hidden" id="variant-id" name="id" value="{{ current_variant.id }}"/>
+              {% unless in_accessories_collection %}
+                <p class="d-none d-lg-none text-center fs-0.875x mt-3 mb-0">Choose your size</p>
+                {% if section.settings.enable_country_size_switcher == true %}
+                  <div class="row mx-0">
+                    <div class="col">
+                      <div id="toggle-size-by-country" class="custom-control custom-switch my-2" style="display: none;" title="Toggle Size by Country">
+                        <label for="countryToggle" class="left-label">US</label>
+                        <input type="checkbox" class="custom-control-input" id="countryToggle" checked/>
+                        <label for="countryToggle" class="custom-control-label right-label">EU</label>
+                        <label for="countryToggle" class="country-toggle-mobile-text d-lg-none">Choose your size</label>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endunless %}
+              {% if product.variants.size > 1 %}
+                <div class="product-variants">
+                  <ul class="list-unstyled">
+                    {% for variant in product.variants %}
+                      <li>
+                        <button type="button" class="product-variant {% if variant == current_variant %}product-variant-selected{% endif %} {% unless variant.available %}product-variant-disabled{% endunless %}" data-variant-id="{{ variant.id }}" data-size-country="EU" available="{{ variant.available }}" {% unless variant.available %} disabled {% endunless %}>
+                          {{ variant.title }}
+                        </button>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+              {% comment %} <label for="Quantity">{{ 'products.product.quantity' | t }}</label> {% endcomment %}
+              <input type="hidden" id="Quantity" name="quantity" value="1" min="1"/>
+              <button class="product-add-to-cart-container" type="submit" name="add" data-submit-button {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                <span class="flex-row d-flex justify-content-center align-items-center" data-submit-button-text>
+                  <span class="btn btn-primary d-flex align-items-center justify-content-center">
+                    {% if is_preorder == true %}
+                      Pre-order
+                    {% else %}
+                      {% if current_variant.available %}
+                        Add to bag
+                      {% else %}
+                        {{ 'products.product.sold_out' | t }}
+                      {% endif %}
+                    {% endif %}
+                  </span>
+                  <span class="btn btn-black d-flex align-items-center justify-content-center">
+                    <span data-price-wrapper>
+                      {% comment %}
+                      <span data-product-price>
+                        {{ current_variant.price | money }}
+                      </span>
+                        {% if product.compare_at_price_max > product.price %}
+                          <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                          <s data-compare-price>
+                            {% if current_variant.compare_at_price > current_variant.price %}
+                              {{ current_variant.compare_at_price | money }}
+                            {% endif %}
+                          </s>
+                        {% endif %}
+                      {% endcomment %}
+                      {% if product.compare_at_price_max > product.price %}
+                        {{ product.price | money }}
+                        <s>{{ product.compare_at_price_max | money }}</s>
+                      {% else %}
+                        {{ product.price | money }}
+                      {% endif %}
+                    </span>
+                  </span>
+                </span>
+                <div class="loading align-items-center justify-content-center">
+                  <img src="{{ 'loading.gif' | asset_url }}" alt="Loading" style="height: 24px;"/>
+                </div>
+              </button>
+            {% endform %}
+            <div class="d-none d-lg-block rte">
+              <div class="insert-klarna-here">
+                {% if product.compare_at_price_max > product.price %}
+                  <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }} <s>{{ product.compare_at_price_max | divided_by: 4.0 | money }}</s>. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
+                {% else %}
+                  <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }}. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
+                {% endif %}
+              </div>
+              {% if description contains "<h3>" %}
+                <div>
+                  <div class="accordion" id="product-description-accordion">
+                    {% for head in tab_heads %}
+                      <div class="description mb-3">
+                        <div class="description-header" id="tab-heading-{{ forloop.index }}">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left mb-3" type="button" data-toggle="collapse" data-target="#tab-{{ forloop.index }}" aria-expanded="false" aria-controls="tab-{{ forloop.index }}">
+                              {{ head }}<span class="icon plus">+</span><span class="icon minus">-</span>
+                            </button>
+                          </h2>
+                        </div>
+                        {% assign this_index = forloop.index | minus: 1 %}
+                        {% assign accordion_content = tab_texts[ this_index ]  %}
+                        <div id="tab-{{ forloop.index }}" class="collapse" aria-labelledby="tab-heading-{{ forloop.index }}" data-parent="#product-description-accordion">
+                          <div class="description-body my-3">
+                            {{ accordion_content }}
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                    {% if section.settings.shipping_returns %}
+                      <div class="description mb-3">
+                        <div class="description-header" id="tab-heading-shipping-returns">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left mb-3" type="button" data-toggle="collapse" data-target="#tab-shipping-returns" aria-expanded="false" aria-controls="tab-shipping-returns">
+                              Shipping and Returns<span class="icon plus">+</span><span class="icon minus">-</span>
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="tab-shipping-returns" class="collapse" aria-labelledby="tab-heading-shipping-returns" data-parent="#product-description-accordion">
+                          <div class="description-body my-3">
+                            {{ section.settings.shipping_returns }}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% unless in_accessories_collection %}
+                      <div class="description mb-3">
+                        <div class="description-header" id="tab-heading-size-chart">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left mb-3" type="button" data-toggle="collapse" data-target="#tab-size-chart" aria-expanded="false" aria-controls="tab-size-chart">
+                              Size Chart<span class="icon plus">+</span><span class="icon minus">-</span>
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="tab-size-chart" class="collapse" aria-labelledby="tab-heading-size-chart" data-parent="#product-description-accordion">
+                          <div class="description-body my-3">
+                            {% include 'size-chart-static' %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endunless %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&amp;','%26'}}" data-description="{{ product.description | escape }}" data-price="{{ variant.price | money_without_currency }}" data-currency="{{ shop.currency }}"></div>
+</section>
+
+{% include 'product-klarna-modal' %}
+
+{% schema %}
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_country_size_switcher",
+        "label": "Enable Country Size Switcher",
+        "default": true,
+        "info": "Only shown if product NOT in Accessories collection"
+      },
+      {
+        "type": "richtext",
+        "id": "shipping_returns",
+        "label": "Shipping and Returns",
+        "default": "<p>We offer free Ground Shipping on all orders. UPS Standard Ground typically arrives in 3-7 business days. UPS Second Day $15 typically arrives in 2 business days. If for any reason you are not satisfied, we are happy to help you complete your return. Please note that all returns must be unworn and in brand new condition and must be initiated within 14 days of receiving your order.</p>"
+      }
+    ]
+  }
+{% endschema %}

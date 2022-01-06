@@ -1,0 +1,67 @@
+<header role="banner" class="container-fluid">
+  <div class="row py-3">
+    <div class="d-flex col-6 d-lg-none align-items-center">
+      <h1 class="page-heading-sm mb-0">{{ collection.title }}</h1>
+    </div>
+    <div class="d-none d-lg-block col-lg-4 col-xl-3 offset-xl-1">
+      {% include 'back-btn' %}
+    </div>
+    <div class="d-none d-lg-flex col-lg-4 justify-content-center align-items-center">
+      <h1 class="page-heading-sm mb-0">{{ collection.title }}</h1>
+    </div>
+    {% if collection.all_tags.size > 0 %}
+      <div class="col col-lg-4 col-xl-3 text-right">
+        <button id="toggle-filters" class="btn mr-1 mr-lg-3">Filters <span id="plus">&#43;</span><span id="minus"
+            class="d-none">&#8722;</span></button>
+        <button id="toggle-view" class="btn text-primary">
+          <i class="fa" aria-hidden="true" id="toggle_icon"></i>
+          <span class="sr-only">Toggle View</span>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</header>
+{% if collection.all_tags.size > 0 %}
+  <div id="filters" class="container" style="display: none;">
+    <div class="tags tags-hidden d-none">
+      {% for tag in collection.all_tags %}
+        {% if current_tags contains tag %}
+        <div class="tag-container active">
+          {{ tag | link_to_remove_tag: tag }}
+        </div>
+        {% else %}
+        
+        <div class="tag-container">
+          {{ tag | link_to_add_tag: tag }}
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="tags tags-shown row justify-content-center">
+      <div class="tags-category col-lg-3" style="display: none;">
+        <h5 class="mb-3">Sneakers Style</h5>
+        <div class="tag-cloud row"></div>
+      </div>
+      <div class="tags-collection col-lg-3" style="display: none;">
+        <h5 class="mb-3">Colors</h5>
+        <div class="tag-cloud row"></div>
+      </div>
+      <div class="tags-material col-lg-3" style="display: none;">
+        <h5 class="mb-3">Material</h5>
+        <div class="tag-cloud row"></div>
+      </div>
+      <!--  
+      <div class="tags-type col-lg-4 text-center text-lg-left" style="display: none;">
+        <h5 class="mb-3">Type</h5>
+        <div class="tag-cloud row"></div>
+      </div>
+      -->
+      <!-- style="display: none;" -->
+      <div class="tags-size col-lg-3" style="display: none;">
+        <h5 class="mb-3">Size</h5>
+        <div class="tag-cloud row justify-content-center">
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

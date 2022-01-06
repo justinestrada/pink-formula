@@ -1,0 +1,18 @@
+
+<section class="loud-text loud-text-blue">
+  <h2>{{ section.settings.description }}</h2>
+</section>
+
+{% schema %}
+{
+  "name": "Loud",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "To cross borders, break conventions and challenge assumptions."
+    }
+  ]
+}
+{% endschema %}

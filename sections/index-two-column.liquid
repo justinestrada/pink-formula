@@ -1,0 +1,59 @@
+
+<section class="d-flex flex-column flex-lg-row">
+  <div class="link-container d-flex justify-content-center align-items-center" style="background-image: url('{{ section.settings.left_image | img_url: 'master' }}')">
+    <a href="{{ section.settings.left_link }}" title="{{ section.settings.left_link_label }}" class="btn btn-link text-white d-flex flex-row align-items-center justify-content-center">
+      <img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}" title="Right arrow">
+      <div>{{ section.settings.left_link_label }}</div>
+    </a>
+  </div>
+  <div class="link-container d-flex justify-content-center align-items-center" style="background-image: url('{{ section.settings.right_image | img_url: 'master' }}')">
+    <a href="{{ section.settings.right_link }}" title="{{ section.settings.right_link_label }}" class="btn btn-link text-white d-flex flex-row align-items-center justify-content-center">
+      <img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}" title="Right arrow">
+      <div>{{ section.settings.right_link_label }}</div>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Two Column",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Column Image"
+    },
+    {
+      "type": "url",
+      "id": "left_link",
+      "label": "Left Column Link"
+    },
+    {
+      "type": "text",
+      "id": "left_link_label",
+      "label": "Left Column Link Label"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Column Image"
+    },
+    {
+      "type": "url",
+      "id": "right_link",
+      "label": "Right Column Link"
+    },
+    {
+      "type": "text",
+      "id": "right_link_label",
+      "label": "Right Column Link Label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column",	
+      "category": "Layout"
+    }
+  ]
+}
+{% endschema %}

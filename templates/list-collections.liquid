@@ -1,0 +1,40 @@
+{% comment %}
+  This page represents the /collections and /products pages.
+{% endcomment %}
+
+<header role="banner" class="container">
+  <div class="row justify-content-center py-3">
+    <div class="col-auto">
+      <h1 class="page-heading-sm mb-0">{{ page_title }}</h1>
+    </div>    
+  </div>
+</header>
+
+<section id="list-collections" class="container">
+  {% paginate collections by 12 %}
+    {% if collections.size > 0 %}
+      <div class="row">
+        {% for collection in collections %}
+          <div class="col-lg-4 mb-5">
+            {% if collection.image %}
+              <img src="{{ collection | img_url: '450x450' }}" alt="{{ collection.image.alt }}" class="w-100 mb-3"/>
+            {% else %}
+              <img src="{{ collection.products.first | img_url: '450x450' }}" alt="{{ collection.title | escape  }}" class="w-100 mb-3"/>
+            {% endif %}
+            <h3>
+              <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}" class="fs-1.125x text-secondary">{{ collection.title }}</a>
+            </h3>
+            <p class="mb-0">{{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="row justify-content-center mb-5">
+        <div class="pagination col-auto py-3">
+          <div id="pagination">{{ paginate | default_pagination }}</div>
+        </div>
+      </div>
+      {% else %}
+      <p>No Collections found</p>
+    {% endif %}
+  {% endpaginate %}
+</section>

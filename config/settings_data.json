@@ -1,0 +1,228 @@
+{
+  "current": {
+    "color_accent": "#0c3df5",
+    "color_body_text": "#000000",
+    "color_main_bg": "#ffffff",
+    "font_heading": "helvetica_n4",
+    "font_body": "helvetica_n4",
+    "share_image": "",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/p448\/",
+    "social_facebook_link": "https:\/\/www.facebook.com\/p448official\/",
+    "social_tiktok_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/p448\/",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "cart_notes_enable": true,
+    "favicon": "shopify:\/\/shop_images\/favicon.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/P448-logo.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "announcement_bar_enabled": true,
+          "announcement_bar_home_page_only": false,
+          "announcement_bar_text": "Free shipping and returns!",
+          "announcement_bar_link": "",
+          "logo": "",
+          "logo_max_width": 80,
+          "menu": "main-menu",
+          "mobile-menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "first_linklist": "footer-column-1",
+          "second_linklist": "footer-column-2"
+        }
+      },
+      "1592853746268": {
+        "type": "index-full-width",
+        "settings": {
+          "background_image": "shopify:\/\/shop_images\/contact_bg.jpg",
+          "title": "World of P448",
+          "description": "<p>P448 is a streetwear sneaker label; a truly contemporary brand whose collections are designed to empower the individual.<\/p>",
+          "call_to_action": "shopify:\/\/pages\/world-of-p448",
+          "call_to_action_label": "Explore"
+        }
+      },
+      "1592856616550": {
+        "type": "index-two-column",
+        "disabled": true,
+        "settings": {
+          "left_image": "shopify:\/\/shop_images\/home_women.jpg",
+          "left_link": "shopify:\/\/collections\/women",
+          "left_link_label": "Shop Women",
+          "right_image": "shopify:\/\/shop_images\/home_men.jpg",
+          "right_link": "shopify:\/\/collections\/men",
+          "right_link_label": "Shop Men"
+        }
+      },
+      "1592862275836": {
+        "type": "index-hero",
+        "settings": {
+          "background": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Collection_8491f32a-44eb-4760-9663-58c4d3a7091f.jpg",
+          "mobile_background_1": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Womens-Shoes.jpg",
+          "mobile_background_2": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Mens-Shoes.jpg",
+          "title": "Fall \/ Winter 2021",
+          "hero_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "1592873961446": {
+        "type": "index-two-column",
+        "settings": {
+          "left_image": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Womens-Shoes_2.jpg",
+          "left_link": "shopify:\/\/collections\/women",
+          "left_link_label": "Shop Women",
+          "right_image": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Mens-Shoes_2.jpg",
+          "right_link": "shopify:\/\/collections\/men",
+          "right_link_label": "Shop Men"
+        }
+      },
+      "page-lookbook-items": {
+        "type": "page-lookbook-items",
+        "blocks": {
+          "1593071672631": {
+            "type": "text",
+            "settings": {
+              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square3.jpg",
+              "lookbook_title": "RE:new",
+              "link": "shopify:\/\/pages\/static-lookbook-rectangle"
+            }
+          },
+          "1593071890097": {
+            "type": "text",
+            "settings": {
+              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square2.jpg",
+              "lookbook_title": "PVC prefecto",
+              "link": "shopify:\/\/pages\/static-lookbook-single"
+            }
+          },
+          "1593071921799": {
+            "type": "text",
+            "settings": {
+              "lookbook_image": "shopify:\/\/shop_images\/p448-lookbook-white-shoes.jpg",
+              "lookbook_title": "Cow combo",
+              "link": "shopify:\/\/pages\/static-lookbook-rectangle"
+            }
+          },
+          "1593073587622": {
+            "type": "text",
+            "settings": {
+              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square2.jpg",
+              "lookbook_title": "PVC prefecto",
+              "link": "shopify:\/\/pages\/static-lookbook-single"
+            }
+          },
+          "1593073753299": {
+            "type": "text",
+            "settings": {
+              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square1.jpg",
+              "lookbook_title": "Cow combo",
+              "link": "shopify:\/\/pages\/static-lookbook-rectangle"
+            }
+          },
+          "1593073792989": {
+            "type": "text",
+            "settings": {
+              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square3.jpg",
+              "lookbook_title": "RE:new",
+              "link": "shopify:\/\/pages\/static-lookbook-single"
+            }
+          }
+        },
+        "block_order": [
+          "1593071672631",
+          "1593071890097",
+          "1593071921799",
+          "1593073587622",
+          "1593073753299",
+          "1593073792989"
+        ],
+        "settings": {}
+      },
+      "product-banner": {
+        "type": "product-banner",
+        "settings": {}
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+          "enable_country_size_switcher": true,
+          "shipping_returns": "<p>We offer free Ground Shipping on all orders. UPS Standard Ground typically arrives in 3-7 business days. UPS Second Day $15 typically arrives in 2 business days. If for any reason you are not satisfied, we are happy to help you complete your return. Please note that all returns must be unworn and in brand new condition and must be initiated within 14 days of receiving your order.<\/p>"
+        }
+      }
+    },
+    "content_for_index": [
+      "1592862275836",
+      "1592856616550",
+      "1592873961446",
+      "1592853746268"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "collection-list": {
+          "type": "collection-list",
+          "blocks": {
+            "collection-list-0": {
+              "type": "collection",
+              "settings": {}
+            },
+            "collection-list-1": {
+              "type": "collection",
+              "settings": {}
+            },
+            "collection-list-2": {
+              "type": "collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "collection-list-0",
+            "collection-list-1",
+            "collection-list-2"
+          ],
+          "settings": {}
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "collection-list",
+        "featured-collection",
+        "featured-product"
+      ]
+    }
+  }
+}

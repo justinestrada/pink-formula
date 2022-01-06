@@ -1,0 +1,19 @@
+
+
+<section class="d-flex flex-column w-100">
+  {% comment %}{{ 'lookbook_single_4@2x.jpg' | asset_url }}{% endcomment %}
+  <img class="w-100 py-2 py-lg-0"  src="{{ section.settings.full_width_image | img_url: 'master' }}" alt="Lookbook Full Width Image"/><!-- style="min-height: 290px" -->
+</section>
+
+{% schema %}
+{
+  "name": "Full Width Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "full_width_image",
+      "label": "Full Width Image"
+    }
+  ]
+}
+{% endschema %}

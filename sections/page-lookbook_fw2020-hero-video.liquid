@@ -1,0 +1,40 @@
+
+<section id="lookbook-hero">
+  <div class="hero-container hero-video-container contianer-fluid">
+    <div class="video-wrapper" style="background-image: url('{{ section.settings.thumbnail | img_url: 'master' }}')">
+      <iframe class="hero-video" src="https://player.vimeo.com/video/{{ section.settings.vimeo_id }}?autoplay=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="hero-video-inner-container d-flex align-items-center justify-content-center">
+      <div class="text-center">
+        <h1 class="text-white font-weight-normal mb-lg-5 px-3">
+          {{ section.settings.title }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Video",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "thumbnail",
+      "label": "Video Thumbnail"
+    },
+    {
+      "type": "text",
+      "id": "vimeo_id",
+      "label": "Vimeo ID",
+      "default": "343009653"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FW2020"
+    }
+  ]
+}
+{% endschema %}

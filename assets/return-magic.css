@@ -1,0 +1,64 @@
+/*
+ *
+ * Return Magic CSS
+ * Should be added here: https://p448-usa.myshopify.com/admin/apps/returnmagic/dashboard-shopify/index.html
+ * Settings > Portal > Design
+ *
+ */
+
+@font-face{font-family:"Apercu Pro";src:url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Regular.woff2?v=4076881704976058279") format("woff2"),url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Regular.woff?v=9473776441585950630") format("woff");font-weight:normal;font-style:normal}@font-face{font-family:"Apercu Pro";src:url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Medium.woff2?v=10532453491366145886") format("woff2"),url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Medium.woff?v=12071733978519756509") format("woff");font-weight:500;font-style:normal}@font-face{font-family:"Apercu Pro";src:url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Bold.woff2?v=10491877750813610355") format("woff2"),url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Bold.woff?v=14779506906511633699") format("woff");font-weight:bold;font-style:normal}@font-face{font-family:"Apercu Pro";src:url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Light.woff2?v=12416432466707969391") format("woff2"),url("//cdn.shopify.com/s/files/1/0256/8768/7215/t/4/assets/ApercuPro-Light.woff?v=13820908995409837447") format("woff");font-weight:300;font-style:normal}*{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body{font-family:"Apercu Pro", "Helvetica Neue", sans-serif;overflow-x:hidden}h1,h2,h3,h4,h5,h6{font-family:"Apercu Pro", "Helvetica Neue", sans-serif}
+
+body,
+h1,
+p {
+  color: #000;
+}
+
+/* add custom border to input fields */
+#alveoAppPortal #auth-form .input-group{
+		border: none;
+    border-bottom: 3px solid #0c3df5;
+    border-radius: 0;
+}
+
+/* Remove default input border*/
+#alveoAppPortal #auth-form input {
+  border: none !important;
+  border-radius: 0;
+}
+
+/* Remove default input icon border*/
+#alveoAppPortal #auth-form .input-group-addon {
+	border: none !important;
+}
+
+/* custom placeholder text color */
+#alveoAppPortal form input.form-control::placeholder  {
+	color: #000000 !important;
+}
+
+/* add custom style to return form button */
+#alveoAppPortal div.text-center .btn {
+	background-color: #0c3df5 !important;
+	margin-top: 2rem;
+}
+
+/* content footer custom style */
+#alveoAppPortal #content-footer{
+	text-align: center;
+	margin-top: 3rem;
+}
+
+.auth-container form input[type=submit],
+.auth-container form input[type=submit]:focus,
+.auth-container form input[type=submit]:active {
+  border-radius: 0 !important;
+  color: white;
+  padding: 8px 12px 6px !important;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.auth-container form .input-group-addon {
+  border-radius: 0;
+}

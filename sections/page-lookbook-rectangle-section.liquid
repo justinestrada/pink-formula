@@ -1,0 +1,30 @@
+
+<div class="col lookbook-item-container">
+  <div class="lookbook-item" style="background-image: url('{{ theme.settings.background | asset_url }}')">
+    <a class="blue-overlay" href="#"><span>{{ section.settings.title }}</span></a>
+  </div>
+</div>
+<!-- <div class="col lookbook-item-container">
+  <div class="lookbook-item" style="background-image: url('{{ theme.settings.background | asset_url }}')">
+    <a class="black-overlay" href="#"> <span>Cow combo </span></a>
+  </div>
+</div> -->
+
+{% schema %}
+{
+  "name": "Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Renew",
+      "default": "PVC prefecto"
+    }
+  ]
+}
+{% endschema %}

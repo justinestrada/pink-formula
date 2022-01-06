@@ -1,0 +1,58 @@
+
+<section id="featured-music" class="d-flex flex-column flex-lg-row w-100 header-container no-gutters">
+  <div class="col">
+    <!-- {{ 'music_unity_1@2x.jpg' | asset_url }} -->
+    <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.title }}"/>
+  </div>
+  <div class="description-container col">
+    <h2 class="featured-album-title h5 mb-4">{{ section.settings.title }}</h2>
+    <p class="featured-album-date body-small">{{ section.settings.date }}</p>
+    <div class="featured-album-description body-small">
+      {{ section.settings.description }}
+    </div>
+    
+  </div>
+  <div class="col">
+    <img src="{{ section.settings.image | img_url: 'master' }}" alt="Music Unity Image 2">
+    <div class="spotify-player">
+      {{ section.settings.embed }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "FImage"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Text",
+      "default": "M x P448 - Music Unity"
+    },
+    {
+      "type": "text",
+      "id": "date",
+      "label": "Date",
+      "default": "26 03 2020"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "<p class=\"body-small\">P448 MUSIC UNITY is the first compilation of a music series curated by our P448 design team. Similar to the fusion of personalities we bring to our sneaker designs, each playlist is built around the team’s combination of unique passions & music tastes.</p><p class=\"body-small\">Check out our designers’ favorite beats, curated just for you and made to lift your spirits.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "embed",
+      "label": "Spotify Embed Code",
+      "default": "<iframe src=\"https://open.spotify.com/embed/user/83k97cv1y9tq2rpnbqwxc8dqw/playlist/07zIJJc7CHunH3W7ibBDNv\" width=\"100%\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>"
+    }
+  ]
+}
+{% endschema %}

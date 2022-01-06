@@ -1,0 +1,258 @@
+
+<style>
+#lookbook-hero-renew p {
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+}
+@media (min-width: 992px) {
+  #section-cta-btn-renew .cta-btn-container {
+    width: 406px;
+  }
+}
+#re-new .collection-product-container {
+  margin-bottom: 0;
+}
+.image-with-text .image-column {
+  min-height: initial;
+  height: calc(100vh - 131px);
+}
+@media (min-width: 992px) {
+  .image-with-text .smaller-heading-column h2 {
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .image-with-text .text-column.smaller-text-column p {
+    font-size: 1rem;
+    line-height: 28px;
+    text-align: left;
+    padding: 45px;
+    font-weight: 400;
+  }
+}
+</style>
+<section id="lookbook-hero-renew" class="image-with-text-inside {% if section.settings.hero_overlay %}image-with-text-inside__overlay{% endif %}" style="background-image: url('{{ section.settings.hero_image | img_url: 'master' }}')">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="hero-content text-center">
+          <div class="w-100">
+            <h1 class="mb-5">{{ page.title }}</h1>
+            {% if section.settings.subtitle %}
+              <h2 class="text-white">{{ section.settings.subtitle }}</h2>
+            {% endif %}
+            {% if section.settings.hero_description %}
+              <p class="mt-3 px-2">{{ section.settings.hero_description }}</p> 
+            {% endif %} 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="image-with-text d-none d-lg-block">
+  <div class="d-flex flex-row">
+    <div class="d-col-12 col-lg-6 text-column">
+      <h2 class="text-black">{{ section.settings.section_1_text }}</h2>
+    </div>
+    <div class="col-12 col-lg-6 image-column" style="background-image: url('{{ section.settings.section_1_image | img_url: 'master' }}')">
+    </div>
+  </div>
+</section>
+
+<section class="image-with-text slide-container d-block d-lg-none">
+  <div class="slider d-block d-lg-none"> 
+    <div class="slide-one" style="background-image: url('{{ section.settings.section_1_image | img_url: 'master' }}')">
+      <div class="align-self-center w-100" style="min-width: 100%;">
+        <h2>{{ section.settings.section_1_text }}</h2>
+      </div>
+      <button id="slick-next" class="btn-icon align-self-center slide-btn_one">
+        <img src="{{ 'arrow-round-right.svg' | asset_url }}" alt="Right arrow">
+      </button>
+    </div>
+    <div class="slide-two text-column">
+      <div class="align-self-center w-100" style="min-width: 100%;">
+        <h2 class="text-black">{{ section.settings.section_1_text }}</h2>
+      </div>
+      <button id="slick-prev" class="btn-icon align-self-center slide-btn_two">
+        <img class="left-arrow-btn" src="{{ 'arrow-round-right_primary.svg' | asset_url }}" alt="Left arrow">
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="image-with-text d-none d-lg-block">
+  <div class="d-flex flex-row">
+    <div class="col-12 col-lg-6 image-column smaller-heading-column" style="background-color: {{ section.settings.section_2_background_color }};">
+      <h2 class="text-white">{{ section.settings.section_2_large_text }}</h2>
+    </div>
+    <div class="d-col-12 col-lg-6 text-column smaller-text-column">
+      <p>{{ section.settings.section_2_small_text }}</p>
+    </div>
+  </div>
+</section>
+
+{% assign collection = collections[section.settings.collection] %}
+<section id="collection-products" class="container-fluid">
+  <div class="collection-products row">
+    {% for product in collection.products limit: section.settings.product_limit offset: section.settings.product_offset %}
+      {% include 'collection-product' %}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.about-hero-container {
+  background-image: url('{{ section.settings.cta_mobile_bg_image | img_url: 'master' }}');
+}
+@media (min-width: 992px) {
+  .about-hero-container {
+    background-image: url('{{ section.settings.cta_desktop_bg_image | img_url: 'master' }}');
+  }
+}
+</style>
+
+<div id="section-cta-btn-renew" class="hero-container about-hero-container about-bottom-hero-container d-flex flex-column justify-content-center align-items-center text-center">
+  <a href="{{ section.settings.cta_link }}" class="cta-btn-container flex-row d-none d-md-flex justify-content-center align-items-center" id="cta-btn">
+    <div class="btn btn-primary d-flex align-items-center justify-content-center">{{ section.settings.cta_left_text }}</div>
+    <div class="btn btn-white d-flex align-items-center justify-content-center">{{ section.settings.cta_right_text }}</div>
+  </a>
+</div>
+
+<a href="{{ section.settings.cta_link }}" class="cta-btn-container flex-row d-flex d-md-none justify-content-center align-items-center" id="cta-btn">
+  <div class="btn btn-primary d-flex align-items-center justify-content-center">{{ section.settings.cta_left_text }}</div>
+  <div class="btn btn-white d-flex align-items-center justify-content-center">{{ section.settings.cta_right_text }}</div>
+</a>
+
+<section class="loud-text d-none d-lg-block bg-black" style="background-color: {{ section.settings.last_section_background_color }};">
+  <h2 class="text-white">{{ section.settings.last_section_text }}</h2>
+</section>
+
+{% schema %}
+  {
+    "name": "Re:new Lookbook",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Hero Image"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "P448 Recycled Sustainable Capsule"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_description",
+        "label": "Hero Description"
+      },
+      {
+        "type": "checkbox",
+        "id": "hero_overlay",
+        "label": "Hero Enable Overlay",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "left_column_image",
+        "label": "Left Column Image"
+      },
+      {
+        "type": "textarea",
+        "id": "section_1_text",
+        "label": "Section 1 Text",
+        "default": "Less waste. Less consumption. Same spirit."
+      },
+      {
+        "type": "image_picker",
+        "id": "section_1_image",
+        "label": "Section 1 Image"
+      },
+      {
+        "type": "color",
+        "id": "section_2_background_color",
+        "label": "Section 2 Background color",
+        "default": "#0c3df5"
+      },
+      {
+        "type": "textarea",
+        "id": "section_2_large_text",
+        "label": "Section 2 Large Text",
+        "default": "It's time to make a change. Introducing RE:new by P448, an exclusive capsule collection made from recycled leather fiber."
+      },
+      {
+        "type": "textarea",
+        "id": "section_2_small_text",
+        "label": "Section 2 Small Text",
+        "default": "Featuring four iconic unisex styles, RE:new is our first step towards a more sustainable future. In an innovative and sustainability-focused process, our RE:new sneakers are made from discarded scrap pieces left over from traditional leather production. The leather fibers are combined with synthetic fibers and woven together in a process called 'water fusion'. After undergoing various fnishing phases, including pigmentation, the end result is a single material roll. RE:new unique leather reduces environmental impact by 80% by drastically cutting back on the levels of waste, consumption and energy that goes into traditional leather production.<br>Through passion, dedication and unrelenting hard-work, P448 is ensuring its signature high-quality craftsmanship remains, creating sneakers that are highly durable, lightweight and supremely comfortable. The eco-sustainable project includes the first dedicated 'green packaging', made from recycled materials. The RE:new Capsule Collection is exclusively packaged in an off-white box complete with P$$8 logo."
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "product_limit",
+        "min": 3,
+        "max": 9,
+        "step": 3,
+        "label": "Number Of Products To Show",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "product_offset",
+        "min": 0,
+        "max": 9,
+        "step": 3,
+        "label": "Number Of Products To Offset",
+        "default": 0
+      },
+      {
+        "type": "image_picker",
+        "id": "cta_mobile_bg_image",
+        "label": "Mobile BG Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "cta_desktop_bg_image",
+        "label": "Desktop BG Image"
+      },
+      {
+        "type": "url",
+        "id": "cta_link",
+        "label": "CTA Link"
+      },
+      {
+        "type": "text",
+        "id": "cta_left_text",
+        "label": "CTA Left Text",
+        "default": "Discover"
+      },
+      {
+        "type": "text",
+        "id": "cta_right_text",
+        "label": "CTA Right Text",
+        "default": "More"
+      },
+      {
+        "type": "color",
+        "id": "last_section_background_color",
+        "label": "Last Section Background color",
+        "default": "#0f0f0f"
+      },
+      {
+        "type": "textarea",
+        "id": "last_section_text",
+        "label": "Last Section Text",
+        "default": "Less waste. Less consumption. Same spirit."
+      }
+    ]
+  }
+{% endschema %}

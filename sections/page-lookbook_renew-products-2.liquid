@@ -1,0 +1,40 @@
+{% assign collection = collections[section.settings.collection] %}
+
+<section id="collection-products" class="container-fluid">
+  <div class="collection-products row">
+    {% for product in collection.products limit: section.settings.product_limit offset: section.settings.product_offset %}
+      {% include 'collection-product' %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Products 2",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "min": 3,
+      "max": 9,
+      "step": 3,
+      "label": "Number Of Products To Show",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "product_offset",
+      "min": 0,
+      "max": 9,
+      "step": 3,
+      "label": "Number Of Products To Offset",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}
