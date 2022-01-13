@@ -31,7 +31,7 @@ Theme Store optional settings
     <div class="header__nav">
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <a href="/" class="navbar-brand" id="logo">
-          <img src="{{ 'logo.svg' | asset_url }}" alt="{{ section.settings.logo.alt | default: shop.name }}" width="{{ section.settings.logo_max_width }}"/>
+          <img src="{{ 'logo.png' | asset_url }}" alt="{{ section.settings.logo.alt | default: shop.name }}" width="{{ section.settings.logo_max_width }}"/>
         </a>
         <div class="d-lg-none">
           <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#cartSidebar" {% if template.name == 'cart' or cart.item_count == 0 %} style="display: none;" {% endif %}>
