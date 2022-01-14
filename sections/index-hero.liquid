@@ -19,6 +19,18 @@
   align-items: center;
   justify-content: center;  
 }
+#hero-container_mobile .hero-container_mobile {
+  position: relative;
+}
+#hero-container_mobile .hero-container_mobile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
 </style>
 <section id="home-hero">
   <div class="hero-container d-none d-lg-flex flex-column justify-content-center align-items-center text-center" style="background-image: url('{{ section.settings.background | img_url: 'master' }}')">
@@ -37,10 +49,9 @@
     </div>
   </div>
   <div id="hero-container_mobile" class="d-flex d-lg-none flex-column">
-    <div class="hero-container_mobile d-flex flex-column justify-content-end align-items-center text-center" style="background-image: url('{{ section.settings.mobile_background_1 | img_url: 'master' }}')">
+    <div class="hero-container_mobile d-flex flex-column justify-content-center align-items-center text-center"
+      style="background-image: url('{{ section.settings.mobile_background_1 | img_url: 'master' }}')">
       <h1 class="text-white font-weight-normal">{{ section.settings.title }}</h1>
-    </div>
-    <div class="hero-container_mobile d-flex flex-column justify-content-start align-items-center text-center" style="background-image: url('{{ section.settings.mobile_background_2 | img_url: 'master' }}')">
     </div>
   </div>
   <div  class="cta-btn-container flex-row d-flex d-lg-none justify-content-center align-items-center" id="cta-btn">
@@ -66,11 +77,6 @@
       "type": "image_picker",
       "id": "mobile_background_1",
       "label": "Mobile Background 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_background_2",
-      "label": "Mobile Background 2"
     },
     {
       "type": "text",

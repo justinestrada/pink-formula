@@ -8,11 +8,12 @@
   <meta name="theme-color" content="{{ settings.color_accent }}">
   <link rel="canonical" href="{{ canonical_url }}">
 
+  {% comment %}
   {%- if settings.favicon != blank -%}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png/">
-  {%- else -%}
-    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png"/>
   {%- endif -%}
+  {% endcomment %}
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png"/>
 
   {%- capture seo_title -%}
     {{ page_title }}

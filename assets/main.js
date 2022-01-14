@@ -1,21 +1,21 @@
 
 $(document).ready(function () {
-  StickyHeader.onload();
-  MobileNav.onLoad();
-  BackToTop.onLoad();
-  BackToPrevious.onLoad();
-  Home.onLoad();
-  Collection.onLoad();
-  Product.onLoad();
-  Cart.onLoad();
-  CartSidebar.onLoad();
-  Login.onLoad();
-  Addresses.onLoad();
-  PageWishlist.onLoad();
-  Lookbook.onLoad();
-  Music.onLoad();
-  LiveChat.onLoad();
-});
+  StickyHeader.onload()
+  MobileNav.onLoad()
+  BackToTop.onLoad()
+  BackToPrevious.onLoad()
+  // Home.onLoad()
+  Collection.onLoad()
+  Product.onLoad()
+  Cart.onLoad()
+  CartSidebar.onLoad()
+  Login.onLoad()
+  Addresses.onLoad()
+  PageWishlist.onLoad()
+  Lookbook.onLoad()
+  Music.onLoad()
+  LiveChat.onLoad()
+})
 
 /*
 * Make the header sticky 

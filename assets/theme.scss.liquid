@@ -328,6 +328,13 @@ a {
 .btn-primary {
   border-color: $primary;
   background-color: $primary;
+
+  &:hover,
+  &:focus {
+    border-color: $primary;
+    background-color: $white;
+    color: $white !important;
+  }
 }
 
 .btn-outline-primary {
@@ -340,6 +347,19 @@ a {
     background-color: $primary;
     color: $white !important;
   }
+
+  &.focus,
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgb(212 9 106);
+  }
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primary.dropdown-toggle {
+  color: $white;
+  background-color: $primary;
+  border-color: $primary;
 }
 
 .btn-icon {
@@ -2002,13 +2022,12 @@ symbol {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 50%;
+    height: 100vh;
   
     h1 {
       font-size: 5rem;
       line-height: 80px;
       position: relative;
-      top: 120px;
       max-width: 462px;
       margin: 0 auto;
     }
