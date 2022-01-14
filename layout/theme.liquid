@@ -66,7 +66,7 @@
   {% endif %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js" integrity="sha256-CtKylYan+AJuoH8jrMht1+1PMhMqrKnB8K5g012WN5I=" crossorigin="anonymous"></script>
-  <script src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js" type="text/javascript"></script>
+  <!-- <script src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js" type="text/javascript"></script> -->
 
   {% if template contains 'customers' %}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
@@ -88,8 +88,6 @@
     </style>
   {% endif %}
 
-  <meta name="google-site-verification" content="5VUHdAwkk3zmVIdiWzDf1C3oQcz6ulOeWSdbVnYwrCs"/>
-
   {{ content_for_header }}
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
@@ -104,6 +102,5 @@
   {% section 'footer' %}
   {% include 'swymSnippet' %}
   {% comment %}ly_liquid_scripts_begin{% endcomment %}{% endcapture %}{% render 'ly-liquid-scripts' content: ly_liquid_content %}{% comment %}ly_liquid_scripts_end{% endcomment %}{% comment %}ly_core_scripts_begin{% endcomment %}{% render 'ly-core-scripts' %}{% comment %}ly_core_scripts_end{% endcomment %}{% comment %}ly_switcher_factory_begin{% endcomment %}{% render 'ly-switcher-factory' %}{% comment %}ly_switcher_factory_end{% endcomment %}
-  <script src="https://cdn.attn.tv/p448/dtag.js"></script>
 </body>
 </html>

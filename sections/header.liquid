@@ -11,6 +11,17 @@ Theme Store optional settings
 - Home page only: only shows on the home page
 {%- endcomment -%}
 
+<style>
+.navbar-brand {
+  padding: 0;
+  height: 56px;
+}
+.navbar-brand img {
+  height: 56px;
+  width: auto;
+}
+</style>
+
 <section data-section-id="{{ section.id }}" data-section-type="header" class="header__container">
   <div class="header sticky-top">
 
@@ -172,7 +183,7 @@ Theme Store optional settings
                 <div class="carousel-item">
                     <div class="navLinksCarousel__subNav container">
                       <a href="javascript:void(0);" data-target="#mobileNav__navLinksCarousel" data-slide-to="0" class="d-block text-center fs-1.5x mb-3">
-                        <img class="moving-left mr-3" src="{{ 'arrow-round-back_primary-blue.svg' | asset_url }}" alt="Back to Previous">
+                        <img class="moving-left mr-3" src="{{ 'arrow-round-back_primary-pink.svg' | asset_url }}" alt="Back to Previous">
                         {{ link.title }}
                       </a>
                       <div class="row">

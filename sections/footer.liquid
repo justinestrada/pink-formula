@@ -56,9 +56,11 @@
     <div class="col-lg-6 col-xl-5 offset-xl-1">
       <div class="row">
         <div class="col-lg-4 fs-1x mt-4 mt-md-0 d-none d-md-flex flex-column">
+          {% comment %}
           <p class="mb-4 text-bold fs-1.125x">
             {{ 'layout.footer.column3_title' | t }}
           </p>
+          {% endcomment %}
           <div class="d-flex flex-column fs-0.75x">
             {% for link in linklists['footer-column-1'].links %}
               <a href="{{ link.url }}" title="{{ link.title }}" class="pb-4">
@@ -68,9 +70,11 @@
           </div>
         </div>
         <div class="col-lg-4 fs-1x mt-4 mt-md-0 d-none d-md-flex flex-column">
+          {% comment %}
           <p class="mb-4 text-bold fs-1.125x">
             {{ 'layout.footer.column4_title' | t }}
           </p>
+          {% endcomment %}
           <div class="d-flex flex-column fs-0.75x">
             {% for link in linklists['footer-column-2'].links %}
               <a href="{{ link.url }}" title="{{ link.title }}" class="pb-4">

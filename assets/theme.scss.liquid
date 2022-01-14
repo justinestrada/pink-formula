@@ -9,7 +9,7 @@ $border-radius: 0;
 
 {% comment %} 
 $theme-colors: (
-  primary: #0c3df5,
+  primary: #d4086b,
   secondary: #0f0f0f,
   dark-grey: #595959,
   light-grey: #eaeaea,
@@ -17,7 +17,7 @@ $theme-colors: (
 {% endcomment %}
 
 // Colors
-$primary: #0c3df5;
+$primary: #d4086b;
 $secondary: #0f0f0f;
 $black: #0f0f0f;
 $dark-grey: #595959;
@@ -48,7 +48,7 @@ $color-border: var(--color-border);
 $color-disabled: #000000;
 $color-disabled-border: #000000;
 $color-error: #ff6d6d;
-$color-error-bg: #ffffff;
+$color-error-bg: $white;
 $color-success: #000000;
 $color-success-bg: #000000;
 
@@ -322,7 +322,7 @@ select {
 }
 
 a {
-  color: #0c3cf5;
+  color: $primary;
 }
 
 .btn-primary {
@@ -843,7 +843,7 @@ html {
 }
 
 .page-heading-light {
-  color: #fff;
+  color: $white;
 }
 
 section,
@@ -2979,7 +2979,7 @@ symbol {
 .contact-page {
   h1 {
     text-align: center;
-    color: #fff;
+    color: $white;
     margin-bottom: 50px;
     font-size: 2.5rem;
     font-weight: normal;
@@ -2997,7 +2997,7 @@ symbol {
   }
 
   .column {
-    background-color: #fff;
+    background-color: $white;
     padding: 39px 41px;
   }
 
@@ -3163,7 +3163,7 @@ symbol {
     width: 100%;
     height: 100%;
     display: block;
-    color: #fff;
+    color: $white;
     font-weight: $font-weight-medium;
     display: flex;
     align-items: center;
@@ -3507,7 +3507,7 @@ symbol {
     font-size: 1.75rem;
     line-height: 34px;
     font-weight: $font-weight-medium;
-    color: #fff;
+    color: $white;
     text-align: center;
     margin: 0;
 
@@ -3525,7 +3525,7 @@ symbol {
   p {
     font-size: 60px;
     line-height: 70px;
-    color: #fff;
+    color: $white;
     font-weight: $font-weight-medium;
     margin-bottom: 0;
   }
@@ -3567,8 +3567,8 @@ symbol {
   }
 
   h2 {
-        align-self: center!important;
-    color: #fff;
+    align-self: center!important;
+    color: $white;
     padding: 50px;
     font-size: 1.75rem;
     line-height: 32px;
@@ -3682,13 +3682,13 @@ symbol {
   color: #0f0f0f;
 
   &.loud-text-blue {
-    background: #0c3df5;
-    color: #fff;
+    background: #d4086b;
+    color: $white;
   }
 
   &.loud-text-black {
     background: $secondary;
-    color: #fff;
+    color: $white;
   }
 
   h2 {

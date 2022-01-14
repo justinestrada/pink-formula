@@ -93,16 +93,22 @@ const BackToTop = {
 const BackToPrevious = {
   onLoad: function () {
     $('#back-to-previous').on('click', function () {
-      window.history.back();
-    });
+      window.history.back()
+    })
   },
-};
+}
 
 /*
 * Footer
 */
 const Footer = {
   onLoad: function () {
+    this.klaviyo()
+  },
+  klaviyo: function() {
+    if (!$('#klaviyo_subscribe').length) {
+      return
+    }
     KlaviyoSubscribe.attachToForms('#klaviyo_subscribe', {
       // Hide klaviyo_field_group after submit
       hide_form_on_success: true,
@@ -113,9 +119,9 @@ const Footer = {
         $method_type: "Custom Klaviyo Form",
         $consent_version: '',
       }
-    });
+    })
   },
-};
+}
 
 const Home = {
   onLoad: function () {
