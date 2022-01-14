@@ -9,7 +9,9 @@
   <link rel="canonical" href="{{ canonical_url }}">
 
   {%- if settings.favicon != blank -%}
-      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png/">
+  {%- else -%}
+    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png"/>
   {%- endif -%}
 
   {%- capture seo_title -%}
