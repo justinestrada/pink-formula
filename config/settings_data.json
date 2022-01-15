@@ -11,11 +11,11 @@
     "share_twitter": true,
     "share_pinterest": true,
     "social_twitter_link": "",
-    "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/p448\/",
-    "social_facebook_link": "https:\/\/www.facebook.com\/p448official\/",
+    "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/",
+    "social_facebook_link": "https:\/\/www.facebook.com\/",
     "social_tiktok_link": "",
     "social_pinterest_link": "",
-    "social_instagram_link": "https:\/\/www.instagram.com\/p448\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/",
     "social_snapchat_link": "",
     "social_tumblr_link": "",
     "social_youtube_link": "",
@@ -23,7 +23,7 @@
     "cart_notes_enable": true,
     "favicon": "shopify:\/\/shop_images\/favicon.png",
     "checkout_header_image": "",
-    "checkout_logo_image": "shopify:\/\/shop_images\/P448-logo.png",
+    "checkout_logo_image": "",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_image": "",
@@ -61,9 +61,9 @@
         "type": "index-full-width",
         "settings": {
           "background_image": "shopify:\/\/shop_images\/contact_bg.jpg",
-          "title": "World of P448",
-          "description": "<p>P448 is a streetwear sneaker label; a truly contemporary brand whose collections are designed to empower the individual.<\/p>",
-          "call_to_action": "shopify:\/\/pages\/world-of-p448",
+          "title": "World",
+          "description": "<p><\/p>",
+          "call_to_action": "shopify:\/\/pages\/world",
           "call_to_action_label": "Explore"
         }
       },
@@ -82,20 +82,20 @@
       "1592862275836": {
         "type": "index-hero",
         "settings": {
-          "background": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Collection_8491f32a-44eb-4760-9663-58c4d3a7091f.jpg",
-          "mobile_background_1": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Womens-Shoes.jpg",
-          "mobile_background_2": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Mens-Shoes.jpg",
-          "title": "Fall \/ Winter 2021",
-          "hero_link": "shopify:\/\/collections\/all"
+          "background": "",
+          "mobile_background_1": "",
+          "mobile_background_2": "",
+          "title": "",
+          "hero_link": ""
         }
       },
       "1592873961446": {
         "type": "index-two-column",
         "settings": {
-          "left_image": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Womens-Shoes_2.jpg",
+          "left_image": "",
           "left_link": "shopify:\/\/collections\/women",
           "left_link_label": "Shop Women",
-          "right_image": "shopify:\/\/shop_images\/P448_Fall-Winter-2021_Mens-Shoes_2.jpg",
+          "right_image": "",
           "right_link": "shopify:\/\/collections\/men",
           "right_link_label": "Shop Men"
         }
@@ -122,7 +122,7 @@
           "1593071921799": {
             "type": "text",
             "settings": {
-              "lookbook_image": "shopify:\/\/shop_images\/p448-lookbook-white-shoes.jpg",
+              "lookbook_image": "",
               "lookbook_title": "Cow combo",
               "link": "shopify:\/\/pages\/static-lookbook-rectangle"
             }

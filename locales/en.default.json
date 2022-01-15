@@ -128,8 +128,8 @@
     },
     "support": {
       "title": "Product Support",
-      "description": "services@p448.com",
-      "link": "mailto:services@p448.com"
+      "description": "",
+      "link": "mailto:"
     },
     "customer_service": {
       "title": "Customer Service",
@@ -138,12 +138,12 @@
     },
     "location": {
       "title": "Our Location",
-      "description": "20121 Milano - Italy",
-      "link": "https:\/\/goo.gl\/maps\/ypjg8fnQxc8nRJZ16"
+      "description": "",
+      "link": ""
     },
     "social": {
       "title": "Social",
-      "follow_us_on": "Follow P448 on"
+      "follow_us_on": "Follow"
     },
     "form": {
       "title": "Get In Touch",
@@ -292,18 +292,18 @@
   },
   "about": {
     "hero": {
-      "title": "P448 is a streetwear sneaker label; a truly contemporary brand whose collections are designed to empower the individual."
+      "title": ""
     },
     "section1": {
-      "title": "P448 seeks to unite. Inclusive and diverse, it is an evolution of the traditional family portrait and serves as an embodiment of contemporary culture."
+      "title": ""
     },
     "section2": {
-      "title": "A sense of belonging is what connects us. We believe in the power of inclusivity.",
-      "description": "Inspired by the power of the individual, we are an evolution of the traditional family portrait and serve as an embodiment of contemporary culture. Founded in 2014 by Marco Samorè and Andrea Curti, P448 is based on their shared philosophy of ‘mixing and matching’. This ethos drives everything from the style aesthetics to the team DNA. As the brand grew, Jacopo Barbieri and Giampaolo Ghirotti joined the team. The P448 family is a dynamic mix of individuals who are united by a collective consciousness."
+      "title": "",
+      "description": ""
     },
     "section3": {
-      "title": "All P448 products are all 100% made in Italy.",
-      "description": "Each sneaker is conceived and manufactured by master craftsmen in the finest factories in Italy, using rich materials, thoughtful details and best-in-class workmanship. From the selection of materials, to the cutting of the leather, to the  hand-stitching of the sole, every step of the production process is executed with meticulous attention to detail. Every P448 design is engineered to achieve perfection in both form and function. An expert team of skilled artisans is devoted to quality and comfort in both design and performance."
+      "title": "",
+      "description": ""
     },
     "section4": {
       "link_title_part1": "Discover",

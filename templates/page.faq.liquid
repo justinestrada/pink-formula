@@ -20,12 +20,14 @@
           </ul>
         </div>
       </div>
+      {% comment %}
       <div class="col-md-8">
         {{ page.content }}
         {% if page.url == '/pages/faq-returns' %}
-          <iframe src="https://services.alveo.io/portal/?&amp;shop=p448-usa.myshopify.com&amp;us.p448.com/a/returns" width="100%" marginheight="0" frameborder="0" height="512px"></iframe>
+          <iframe src="https://services.alveo.io/portal/?&amp;shop={{ site.url }}/a/returns" width="100%" marginheight="0" frameborder="0" height="512px"></iframe>
         {% endif %}
       </div>
+      {% endcomment %}
     </div>
   </div>
 </section>

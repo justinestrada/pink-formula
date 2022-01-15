@@ -110,8 +110,8 @@ Theme Store optional settings
             {% if sub_link.links == blank %}
             <div class="col-lg-3 head__content--image">
               <a href="{{ sub_link.url }}" title="{{ sub_link.title }}">
-                {% if sub_link.url == "/pages/world-of-p448" %}
-                  <div class="nav-image mb-3" style="background-image: url('{{ section.settings.menu_item_world_of_p448_image | img_url: 'large' }}');">
+                {% if sub_link.url == "/pages/world" %}
+                  <div class="nav-image mb-3" style="background-image: url('{{ section.settings.menu_item_world_image | img_url: 'large' }}');">
                   </div>
                 {% elsif sub_link.url == "/pages/lookbook" %}
                   <div class="nav-image mb-3" style="background-image: url('{{ section.settings.menu_item_lookbook_image | img_url: 'large' }}');">
@@ -191,8 +191,8 @@ Theme Store optional settings
                           <diiv class="col-6">
                             <div class="navLinksCarousel__subNav--image w-100">
                               <a href="{{ sub_link.url }}" title="{{ sub_link.title }}">
-                                {% if sub_link.url == "/pages/world-of-p448" %}
-                                  <div class="nav-image mb-2" style="background-image: url('{{ section.settings.menu_item_world_of_p448_image | img_url: 'large' }}')">
+                                {% if sub_link.url == "/pages/world" %}
+                                  <div class="nav-image mb-2" style="background-image: url('{{ section.settings.menu_item_world_image | img_url: 'large' }}')">
                                   </div>
                                 {% elsif sub_link.url == "/pages/lookbook" %}
                                   <div class="nav-image mb-2" style="background-image: url('{{ section.settings.menu_item_lookbook_image | img_url: 'large' }}')">
@@ -356,8 +356,8 @@ Theme Store optional settings
     },
     {
       "type": "image_picker",
-      "id": "menu_item_world_of_p448_image",
-      "label": "Menu Item World of P448 image"
+      "id": "menu_item_world_image",
+      "label": "Menu Item World"
     },
     {
       "type": "image_picker",

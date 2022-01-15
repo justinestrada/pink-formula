@@ -257,8 +257,8 @@ const CollectionProductCards = {
   },
   /*
    * Set Aspect Ratio
-   * P448 Aspect Ratio
-   * P448 Product images are 2200px by 1760px which is 5:4 ratio
+   * Aspect Ratio
+   * Product images are 2200px by 1760px which is 5:4 ratio
    */
   setAspectRatio: function () {
     $('.collection-products .collection-product-container').each(function () {
