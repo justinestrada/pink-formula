@@ -28,9 +28,10 @@
               <a href="{{ "contact.customer_service.link" | t }}" title="{{ "contact.customer_service.title" | t }}">
                 {{ "contact.customer_service.description" | t }}
               </a>
-              <p class="mb-0"><span itemprop="openingHours" content="Mo,Tu,We,Th,Fri 10:00-5:00">Monday - Friday 10am - 5pm ET</span></p>
+              <p class="mb-0"><span itemprop="openingHours" content="Mo,Tu,We,Th,Fri 10:00-5:00">Monday - Friday 10am - 5pm PST</span></p>
             </div>
           </div>
+          {% comment %}
           <div class="contact-item">
             <div class="contact-icon">
               <img class="img-fluid" src="{{ 'location.svg' | asset_url }}">
@@ -42,6 +43,7 @@
               </a>
             </div>
           </div>
+          {% endcomment %}
           <div class="contact-item">
             <div class="contact-icon">
               <img class="img-fluid" src="{{ 'social.svg' | asset_url }}" />
@@ -52,24 +54,24 @@
               </h3>
               <ul class="social-icons">
                 <li>
-                  <a href="{{ settings.social_instagram_link }}" title="{{ "contact.social.follow_us_on" | t }} Instagram" target="_blank">
+                  <a href="https://www.instagram.com/pink_formula/" title="{{ "contact.social.follow_us_on" | t }} Instagram" target="_blank">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
                     <span class="sr-only">Instagram</span>
                   </a>
                 </li>
                 <li>
-                  <a href="{{ settings.social_facebook_link }}" title="{{ "contact.social.follow_us_on" | t }} Facebook" target="_blank">
+                  <a href="https://www.facebook.com/Pink-Formula-100454228617601" title="{{ "contact.social.follow_us_on" | t }} Facebook" target="_blank">
                     <i class="fab fa-facebook-square" aria-hidden="true"></i>
                     <span class="sr-only">Facebook</span>
                   </a>
                 </li>
+                {% comment %}
                 <li>
                   <a href="{{ settings.social_linkedin_link }}" title="{{ "contact.social.follow_us_on" | t }} LinkedIn" target="_blank">
                     <i class="fab fa-linkedin" aria-hidden="true"></i>
                     <span class="sr-only">LinkedIn</span>
                   </a>
                 </li>
-                {% comment %}
                 <li>
                   <a href="{{ settings.social_twitter_link }}" title="{{ "contact.social.follow_us_on" | t }} Twitter" target="_blank">
                     <i class="fab fa-twitter-square"></i>

@@ -42,7 +42,10 @@ Theme Store optional settings
     <div class="header__nav">
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <a href="/" class="navbar-brand" id="logo">
+          {% comment %}
           <img src="{{ 'logo.png' | asset_url }}" alt="{{ section.settings.logo.alt | default: shop.name }}" width="{{ section.settings.logo_max_width }}"/>
+          {% endcomment %}
+          <img src="https://cdn.shopify.com/s/files/1/0616/4027/8262/files/logo_96a94f47-f915-442e-b0a6-fa3cd9ab30fc.png?v=1642300106" alt="{{ section.settings.logo.alt | default: shop.name }}" width="{{ section.settings.logo_max_width }}"/>
         </a>
         <div class="d-lg-none">
           <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#cartSidebar" {% if template.name == 'cart' or cart.item_count == 0 %} style="display: none;" {% endif %}>
