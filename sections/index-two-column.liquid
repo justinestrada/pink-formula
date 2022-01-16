@@ -1,15 +1,15 @@
 
-<section class="d-flex flex-column flex-lg-row">
+<section class="index-two-column d-flex flex-column flex-lg-row">
   <div class="link-container d-flex justify-content-center align-items-center" style="background-image: url('{{ section.settings.left_image | img_url: 'master' }}')">
     <a href="{{ section.settings.left_link }}" title="{{ section.settings.left_link_label }}" class="btn btn-link text-white d-flex flex-row align-items-center justify-content-center">
       <img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}" title="Right arrow">
-      <div>{{ section.settings.left_link_label }}</div>
+      <div class="link-container_label">{{ section.settings.left_link_label }}</div>
     </a>
   </div>
   <div class="link-container d-flex justify-content-center align-items-center" style="background-image: url('{{ section.settings.right_image | img_url: 'master' }}')">
     <a href="{{ section.settings.right_link }}" title="{{ section.settings.right_link_label }}" class="btn btn-link text-white d-flex flex-row align-items-center justify-content-center">
       <img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}" title="Right arrow">
-      <div>{{ section.settings.right_link_label }}</div>
+      <div class="link-container_label">{{ section.settings.right_link_label }}</div>
     </a>
   </div>
 </section>

@@ -348,10 +348,10 @@ a {
     color: $white !important;
   }
 
-  &.focus,
-  &:focus {
-    box-shadow: 0 0 0 0.2rem rgb(212 9 106);
-  }
+  // &.focus,
+  // &:focus {
+  //   // box-shadow: 0 0 0 0.2rem rgb(212 9 106);
+  // }
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active,
@@ -2149,6 +2149,39 @@ symbol {
   height: 70px;
   width: 100%;
   font-size: 2.5rem;
+}
+
+.index-two-column {
+  .link-container {
+    position: relative;
+
+    .btn-link {
+      position: relative;
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.325);
+      opacity: 0;
+      transition: all 500ms;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+
+      .btn-link {
+        display: block;
+      }
+    }
+  }
 }
 
 //
