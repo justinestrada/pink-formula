@@ -1,5 +1,19 @@
 {
   "current": {
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
     "color_accent": "#0c3df5",
     "color_body_text": "#000000",
     "color_main_bg": "#ffffff",
@@ -22,30 +36,16 @@
     "social_vimeo_link": "",
     "cart_notes_enable": true,
     "favicon": "shopify:\/\/shop_images\/favicon.png",
-    "checkout_header_image": "",
-    "checkout_logo_image": "",
-    "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
-    "checkout_body_background_image": "",
-    "checkout_body_background_color": "#fff",
-    "checkout_input_background_color_mode": "white",
-    "checkout_sidebar_background_image": "",
-    "checkout_sidebar_background_color": "#fafafa",
-    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "checkout_accent_color": "#197bbd",
-    "checkout_button_color": "#197bbd",
-    "checkout_error_color": "#e32c2b",
     "sections": {
       "header": {
         "type": "header",
         "settings": {
           "announcement_bar_enabled": true,
           "announcement_bar_home_page_only": false,
-          "announcement_bar_text": "Free shipping and returns!",
+          "announcement_bar_text": "Free shipping over $40!",
           "announcement_bar_link": "",
-          "logo": "",
-          "logo_max_width": 80,
+          "logo": "shopify:\/\/shop_images\/logo_96a94f47-f915-442e-b0a6-fa3cd9ab30fc.png",
+          "logo_max_width": 140,
           "menu": "main-menu",
           "mobile-menu": "main-menu"
         }
@@ -53,17 +53,17 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "first_linklist": "footer-column-1",
-          "second_linklist": "footer-column-2"
+          "first_linklist": "footer",
+          "second_linklist": "footer-menu-2"
         }
       },
       "1592853746268": {
         "type": "index-full-width",
         "settings": {
-          "background_image": "shopify:\/\/shop_images\/contact_bg.jpg",
-          "title": "World",
-          "description": "<p><\/p>",
-          "call_to_action": "shopify:\/\/pages\/world",
+          "background_image": "shopify:\/\/shop_images\/denys-nevozhai-D8iZPlX-2fs-unsplash_5357eb4e-2c86-41ff-8e05-87e7c4ccf3d7.jpg",
+          "title": "Leading Solution",
+          "description": "<p>for all your glass bong cleaning needs. Pink Formula is fast and effective, and Immediate Results for Glass\/bong cleaning! Easy to use.<\/p>",
+          "call_to_action": "shopify:\/\/collections\/all",
           "call_to_action_label": "Explore"
         }
       },
@@ -71,10 +71,8 @@
         "type": "index-two-column",
         "disabled": true,
         "settings": {
-          "left_image": "shopify:\/\/shop_images\/home_women.jpg",
           "left_link": "shopify:\/\/collections\/women",
           "left_link_label": "Shop Women",
-          "right_image": "shopify:\/\/shop_images\/home_men.jpg",
           "right_link": "shopify:\/\/collections\/men",
           "right_link_label": "Shop Men"
         }
@@ -82,85 +80,25 @@
       "1592862275836": {
         "type": "index-hero",
         "settings": {
-          "background": "",
-          "mobile_background_1": "",
-          "mobile_background_2": "",
-          "title": "",
-          "hero_link": ""
+          "background": "shopify:\/\/shop_images\/denys-nevozhai-D8iZPlX-2fs-unsplash_5357eb4e-2c86-41ff-8e05-87e7c4ccf3d7.jpg",
+          "mobile_background_1": "shopify:\/\/shop_images\/denys-nevozhai-D8iZPlX-2fs-unsplash_5357eb4e-2c86-41ff-8e05-87e7c4ccf3d7.jpg",
+          "title": "High Above <br>The Competition",
+          "hero_link1": "shopify:\/\/collections\/all",
+          "hero_left_button_text": "Discover",
+          "hero_link2": "shopify:\/\/collections\/all",
+          "hero_right_button_text": "More"
         }
       },
       "1592873961446": {
         "type": "index-two-column",
         "settings": {
-          "left_image": "",
-          "left_link": "shopify:\/\/collections\/women",
+          "left_image": "shopify:\/\/shop_images\/Pink-Formula_512x512_72295caa-344b-412a-807a-6eea9b06304e.jpg",
+          "left_link": "shopify:\/\/products\/pink-formula",
           "left_link_label": "Shop Women",
-          "right_image": "",
-          "right_link": "shopify:\/\/collections\/men",
+          "right_image": "shopify:\/\/shop_images\/Pink-Formula-Wipes.jpg",
+          "right_link": "shopify:\/\/products\/wipes",
           "right_link_label": "Shop Men"
         }
-      },
-      "page-lookbook-items": {
-        "type": "page-lookbook-items",
-        "blocks": {
-          "1593071672631": {
-            "type": "text",
-            "settings": {
-              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square3.jpg",
-              "lookbook_title": "RE:new",
-              "link": "shopify:\/\/pages\/static-lookbook-rectangle"
-            }
-          },
-          "1593071890097": {
-            "type": "text",
-            "settings": {
-              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square2.jpg",
-              "lookbook_title": "PVC prefecto",
-              "link": "shopify:\/\/pages\/static-lookbook-single"
-            }
-          },
-          "1593071921799": {
-            "type": "text",
-            "settings": {
-              "lookbook_image": "",
-              "lookbook_title": "Cow combo",
-              "link": "shopify:\/\/pages\/static-lookbook-rectangle"
-            }
-          },
-          "1593073587622": {
-            "type": "text",
-            "settings": {
-              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square2.jpg",
-              "lookbook_title": "PVC prefecto",
-              "link": "shopify:\/\/pages\/static-lookbook-single"
-            }
-          },
-          "1593073753299": {
-            "type": "text",
-            "settings": {
-              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square1.jpg",
-              "lookbook_title": "Cow combo",
-              "link": "shopify:\/\/pages\/static-lookbook-rectangle"
-            }
-          },
-          "1593073792989": {
-            "type": "text",
-            "settings": {
-              "lookbook_image": "shopify:\/\/shop_images\/sample_lookbook_square3.jpg",
-              "lookbook_title": "RE:new",
-              "link": "shopify:\/\/pages\/static-lookbook-single"
-            }
-          }
-        },
-        "block_order": [
-          "1593071672631",
-          "1593071890097",
-          "1593071921799",
-          "1593073587622",
-          "1593073753299",
-          "1593073792989"
-        ],
-        "settings": {}
       },
       "product-banner": {
         "type": "product-banner",
@@ -171,6 +109,12 @@
         "settings": {
           "enable_country_size_switcher": true,
           "shipping_returns": "<p>We offer free Ground Shipping on all orders. UPS Standard Ground typically arrives in 3-7 business days. UPS Second Day $15 typically arrives in 2 business days. If for any reason you are not satisfied, we are happy to help you complete your return. Please note that all returns must be unworn and in brand new condition and must be initiated within 14 days of receiving your order.<\/p>"
+        }
+      },
+      "cart-sidebar": {
+        "type": "cart-sidebar",
+        "settings": {
+          "title": "Shopping Cart"
         }
       }
     },
