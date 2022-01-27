@@ -330,10 +330,21 @@ a {
   background-color: $primary;
 
   &:hover,
-  &:focus {
-    border-color: $primary;
-    background-color: $white;
+  &:focus,
+  &:active {
+    border-color: $primary !important;
+    background-color: $white !important;
     color: $primary !important;
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: $primary !important;
+    color: $white !important;
+  }
+
+  &:focus-visible {
+    outline: none !important;
   }
 }
 

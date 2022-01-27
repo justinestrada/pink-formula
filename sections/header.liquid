@@ -79,7 +79,7 @@ Theme Store optional settings
               <span class="cart-has-items">{{ cart.item_count }}</span>
               {{ 'layout.cart.title' | t }}
             </button>
-            <button class="btn my-2 my-sm-0" id="searchButton" type="button">Search<i class="fa fa-times ml-1" aria-hidden="true" style="display: none; position: relative; top: 1px;"></i></button>
+            {% comment %} <button class="btn my-2 my-sm-0" id="searchButton" type="button">Search<i class="fa fa-times ml-1" aria-hidden="true" style="display: none; position: relative; top: 1px;"></i></button> {% endcomment %}
             {% if customer %}
               <a href="/account" class="btn my-2 my-sm-0">My Account</a>
             {% else %}
@@ -89,7 +89,7 @@ Theme Store optional settings
         </div>
       </nav>
     </div>
-
+{% comment %} 
     <div class="header__searchBar py-5 hideContent searchBar" id="searchBar">
       <form action="/search" method="GET" role="search">
         <div class="input-group input-group-lg">
@@ -101,7 +101,7 @@ Theme Store optional settings
           </button>
         </div>
       </form>
-    </div>
+    </div> {% endcomment %}
 
     <div class="header__content--wrapper">
       {% assign child_menu_counter = 0 %}
@@ -219,7 +219,7 @@ Theme Store optional settings
             {% endfor %}
           </div>
         </div>
-        <div class="mobileNav__searchBar">
+        {% comment %} <div class="mobileNav__searchBar">
           <form action="/search" method="GET" role="search">
             <div class="input-group input-group w-75 m-auto">
               <input class="form-control searchBar__input fs-1x" type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-describedby="inputGroup-sizing"/>
@@ -232,12 +232,12 @@ Theme Store optional settings
               </button>
             </div>
           </form>
-        </div>
+        </div> {% endcomment %}
         <div class="text-center">
           {% if customer %}
-            <a href="javascript:void(0);" class="d-block mobileLinks py-5" data-myaccount-toggle>My Account</a>
+            <a href="javascript:void(0);" class="d-block mobileLinks py-4" data-myaccount-toggle>My Account</a>
           {% else %}
-            <a href="/account/login" class="d-block mobileLinks py-5">My Account</a>
+            <a href="/account/login" class="d-block mobileLinks py-4">My Account</a>
           {% endif %}
         </div>
       </div>
