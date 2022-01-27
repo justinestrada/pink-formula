@@ -149,7 +149,7 @@
             {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
               {% comment %}{{ product.variants.first.id }}{% endcomment %}
               <input type="hidden" id="variant-id" name="id" value="{{ current_variant.id }}"/>
-              {% unless in_accessories_collection %}
+              {% comment %} {% unless in_accessories_collection %}
                 <p class="d-none d-lg-none text-center fs-0.875x mt-3 mb-0">Choose your size</p>
                 {% if section.settings.enable_country_size_switcher == true %}
                   <div class="row mx-0">
@@ -163,7 +163,7 @@
                     </div>
                   </div>
                 {% endif %}
-              {% endunless %}
+              {% endunless %} {% endcomment %}
               {% if product.variants.size > 1 %}
                 <div class="product-variants">
                   <ul class="list-unstyled">

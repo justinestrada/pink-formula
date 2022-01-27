@@ -651,18 +651,18 @@ const ProductSizeByCountry = {
     }
   },
   onClick: function (has_type) {
-    $('#toggle-size-by-country input').on('change', function () {
-      if ($(this).is(':checked')) {
-        ProductSizeByCountry.changeTheSizes('EU');
-      } else {
-        if (has_type.women) {
-          ProductSizeByCountry.changeTheSizes('US_WOMEN');
-        } else if (has_type.men) {
-          ProductSizeByCountry.changeTheSizes('US_MEN');
-        }
-      }
-      Product.setInnerProductBodyMargins(); // sometimes chang which variant appears changes the height
-    });
+    // $('#toggle-size-by-country input').on('change', function () {
+    //   if ($(this).is(':checked')) {
+    //     ProductSizeByCountry.changeTheSizes('EU');
+    //   } else {
+    //     if (has_type.women) {
+    //       ProductSizeByCountry.changeTheSizes('US_WOMEN');
+    //     } else if (has_type.men) {
+    //       ProductSizeByCountry.changeTheSizes('US_MEN');
+    //     }
+    //   }
+    //   Product.setInnerProductBodyMargins(); // sometimes chang which variant appears changes the height
+    // });
   },
   changeTheSizes: function (selected_size_country) {
     $('.product-variants .product-variant').each(function () {
