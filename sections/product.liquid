@@ -85,6 +85,7 @@
             {% if forloop.index == 1 %}
               <div class="d-lg-none row mx-0">
                 <div class="mobile-product-content col pt-4">
+                  {% comment %}
                   <div class="insert-klarna-here">
                     {% if product.compare_at_price_max > product.price %}
                       <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }} <s>{{ product.compare_at_price_max | divided_by: 4.0 | money }}</s>. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
@@ -92,6 +93,7 @@
                       <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }}. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
                     {% endif %}
                   </div>
+                  {% endcomment %}
                   <div class="product-long-description mb-4">
                     {{ pretext }}
                   </div>
@@ -222,6 +224,7 @@
               </button>
             {% endform %}
             <div class="d-none d-lg-block rte">
+              {% comment %}
               <div class="insert-klarna-here">
                 {% if product.compare_at_price_max > product.price %}
                   <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }} <s>{{ product.compare_at_price_max | divided_by: 4.0 | money }}</s>. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
@@ -229,6 +232,7 @@
                   <p>Pay in 4 installments of {{ product.price | divided_by: 4.0 | money }}. Klarna. <a href="#klarnaModal" data-toggle="modal" data-target="#klarnaModal"><u>Learn more</u></a></p>
                 {% endif %}
               </div>
+              {% endcomment %}
               {% if description contains "<h3>" %}
                 <div>
                   <div class="accordion" id="product-description-accordion">
