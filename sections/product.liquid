@@ -135,9 +135,11 @@
         <div class="product-body"><!--  d-flex align-items-center -->
           <div class="inner-product-body">
             <div class="d-none d-lg-block">
+              {% comment %}
               <div class="mb-4">
                 {% include 'btn-wishlist' %}
               </div>
+              {% endcomment %}
               <h1 class="mb-4">{{ product.title }}</h1>
               {% comment %} Inventory tracking on product page 
               <div id="variant-inventory" class="{% unless current_variant.available %} hide {% endunless %}">

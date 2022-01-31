@@ -446,8 +446,8 @@ const Product = {
   },
   setProductFooter: function() {
     if ($(window).width() < 991) {
-      const product_form_height = $('.template-product .shopify-product-form').height();
-      $('#shopify-section-footer').css('margin-bottom', product_form_height);
+      const product_form_height = $('.template-product .shopify-product-form').height()
+      $('#shopify-section-footer').css('padding-bottom', product_form_height).css('margin-bottom', product_form_height)
     }
   },
   setEmbedResponsive: function () {

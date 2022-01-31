@@ -33,9 +33,11 @@
   </div>
   <div class="collection-product info-card" style="background-image: url('{% if product.images.size == 1 %} {{ product.featured_image.src | img_url: '800x800' }} {% else %} {{ product.images[1].src | img_url: '800x800' }}}} {% endif %}')">
     <div class="row">
+      {% comment %}
       <div class="info-details top_left col-3 px-0">
         {% include 'btn-wishlist' %}
       </div>
+      {% endcomment %}
       <div class="info-details top_center col-6 px-md-0">
         <a href="{{ product.url | within: collection }}" class="text-secondary">
           {{ product.title }}
