@@ -1,0 +1,138 @@
+<div class="container-wholesale_from">
+  {% form 'contact' %}
+  {{ form.errors | default_errors }}
+
+  <div class="form-inputs">
+    <div class="input-group input-group-dark">
+      <label for="first_name">First Name*</label>
+      <input
+        type="text"
+        class="form-control"
+        id="first_name"
+        name="contact[first_name]"
+        placeholder="First Name*"
+        required
+      />
+    </div>
+
+    <div class="input-group input-group-dark">
+      <label for="last_name">Last Name*</label>
+      <input
+        type="text"
+        class="form-control"
+        id="last_name"
+        name="contact[last_name]"
+        placeholder="Last Name*"
+        required
+      />
+    </div>
+
+    <div class="input-group input-group-dark">
+      <label for="email">Email*</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="contact[email]"
+        placeholder="Email"
+        required
+      />
+    </div>
+
+    <div class="input-group input-group-dark">
+      <label for="phone_number">Phone Number*</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone_number"
+        name="contact[phone_number]"
+        placeholder="Phone Number"
+        pattern="[0-9\-]*"
+        required
+      />
+    </div>
+
+    <div class="input-group input-group-dark">
+      <label for="business_name">Business Name*</label>
+      <input
+        type="text"
+        class="form-control"
+        id="business_name"
+        name="contact[business_name]"
+        placeholder="Business Name"
+        required
+      />
+    </div>
+
+    <div class="input-group input-group-dark">
+      <label for="business_address">Business Address*</label>
+      <textarea
+        type="text"
+        class="form-control"
+        id="business_address"
+        name="contact[business_address]"
+        required
+      ></textarea>
+    </div>
+
+    <div class="container-check_group">
+      <label>Business Type*</label>
+      <div class="check-group check-group-dark">
+          <input
+            type="radio"
+            id="distributor"
+            name="contact[business_type]"
+            value="Distributor"
+            class="form-check-input"
+            required
+          />
+          <label class="form-check-label" for="distributor">Distributor</label>
+        </div>
+        <div class="check-group check-group-dark">
+          <input
+            type="radio"
+            id="wholesale"
+            name="contact[business_type]"
+            value="wholesale"
+            class="form-check-input"
+          />
+          <label class="form-check-label" for="wholesale">Wholesale</label>
+      </div>
+    </div>
+
+    <div class="input-group input-group-dark">
+      <label for="number_of_Locations">Number of Locations*</label>
+      <input
+        type="number"
+        class="form-control"
+        id="number_of_Locations"
+        name="contact[number_of_Locations]"
+        placeholder="Number of Location"
+        required
+      />
+    </div>
+
+    <div class="input-group input-group-dark">
+      <label for="how_did_you_hear_about_us">How Did You Hear About Us?</label>
+      <input
+        type="text"
+        class="form-control"
+        id="how_did_you_hear_about_us"
+        name="contact[how_did_you_hear_about_us]"
+        placeholder="How did you hear about us?"
+      />
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <input
+      type="submit"
+      class="btn btn-primary w-100"
+      value="{{ 'contact.form.submit' | t }}"
+    />
+  </div>
+  {% if form.posted_successfully? %}
+    <p class="note text-success text-center">Thank for submitting your account for approval. We are going to review it as soon as possible. We will contact you soon!</p>
+  {% endif %}
+  {% endform %}
+</div>
