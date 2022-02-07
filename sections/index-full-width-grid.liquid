@@ -1,0 +1,101 @@
+<style>
+#index_full-width-grid .card {
+  width: 100%;
+  min-height: 256px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+}
+#index_full-width-grid .card .card-body {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+@media (max-width: 767px) {
+  #index_full-width-grid [class*="col"]:nth-child(5) {
+    order: 8;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #index_full-width-grid [class*="col"]:nth-child(3) { /* image */
+    order: 4;
+  }
+  #index_full-width-grid [class*="col"]:nth-child(4) {
+    order: 3;
+  }
+  #index_full-width-grid [class*="col"]:nth-child(5) {
+    order: 6;
+  }
+  #index_full-width-grid [class*="col"]:nth-child(6) {
+    order: 5;
+  }
+  #index_full-width-grid [class*="col"]:nth-child(7) {
+    order: 7;
+  }
+  #index_full-width-grid [class*="col"]:nth-child(8) {
+    order: 8;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  #index_full-width-grid [class*="col"]:nth-child(5) {
+    order: 7;
+  }
+}
+</style>
+<section id="index_full-width-grid" class="container-fluid">
+  <div class="row">
+    {% if section.blocks %}
+      {% for block in section.blocks %}
+        <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: 'master' }}" alt="" class="w-100"/>
+          {% endif %}
+          {% if block.settings.text != '' %}
+            <div class="card bg-primary h-100">
+              <div class="card-body">
+                {{ block.settings.text | html }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <div class="d-none d-lg-block col-lg-4 d-xl-none p-0" style="order: 8;">
+        <img src="https://cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula2.jpg?v=1644204194" alt="Pink Formula" class="w-100"/>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Full Width Grid",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Width Grid",	
+      "category": "Layout"
+    }
+  ]
+}
+{% endschema %}
