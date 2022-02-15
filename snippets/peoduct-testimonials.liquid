@@ -1,0 +1,143 @@
+<style>
+  #index_full-width-grid .card {
+    width: 100%;
+    min-height: 256px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+  }
+  #index_full-width-grid .card .card-body {
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+  @media (max-width: 767px) {
+    #index_full-width-grid [class*="col"]:nth-child(5) {
+      order: 8;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    #index_full-width-grid [class*="col"]:nth-child(3) {
+      /* image */
+      order: 4;
+    }
+    #index_full-width-grid [class*="col"]:nth-child(4) {
+      order: 3;
+    }
+    #index_full-width-grid [class*="col"]:nth-child(5) {
+      order: 6;
+    }
+    #index_full-width-grid [class*="col"]:nth-child(6) {
+      order: 5;
+    }
+    #index_full-width-grid [class*="col"]:nth-child(7) {
+      order: 7;
+    }
+    #index_full-width-grid [class*="col"]:nth-child(8) {
+      order: 8;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    #index_full-width-grid [class*="col"]:nth-child(5) {
+      order: 7;
+    }
+  }
+</style>
+<section id="index_full-width-grid" class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <img
+        src="//cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula2.jpg?v=1644204194"
+        alt=""
+        class="w-100"
+      />
+    </div>
+
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <div class="card bg-primary h-100">
+        <div class="card-body">
+          <p>
+            "Best product I've tried! Easy to use, effective, and no residue
+            left behind. Brings old pipes back to brand new almost instantly!"
+            Krystal R.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <img
+        src="//cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula1.jpg?v=1644204194"
+        alt=""
+        class="w-100"
+      />
+    </div>
+
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <div class="card bg-primary h-100">
+        <div class="card-body">
+          <p>
+            "After trying this product, I don’t see myself using any others.
+            Instructions are super easy to follow, the process is very quick and
+            the product works wonders. Nothing but great things to say about the
+            pink formula’!" - Brady
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <div class="card bg-primary h-100">
+        <div class="card-body">
+          <p>
+            "This stuff is magic. I have tried everything to clean my hookah
+            bowl - vinegar &amp; baking soda, disinfectants, even bleach!
+            NOTHING worked as well as pink formula - we were SHOCKED to see all
+            the residue come off with just a few pours &amp; shakes. I ordered
+            more bottles and I’m sharing them with my hookah-loving friends.
+            It’s a new staple!" - Claudia
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <img
+        src="//cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula4.jpg?v=1644204194"
+        alt=""
+        class="w-100"
+      />
+    </div>
+
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <div class="card bg-primary h-100">
+        <div class="card-body">
+          <p>
+            "I own a couple smoke shops, my customers that have tried this
+            product came back for more. They rave at how fast it works it cleans
+            right away, no need to soak. It does what it's supposed to do
+            quickly and almost effortlessly." - Sam
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 col-xl-3 p-0">
+      <img
+        src="//cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula3.jpg?v=1644204194"
+        alt=""
+        class="w-100"
+      />
+    </div>
+
+    <div class="d-none d-lg-block col-lg-4 d-xl-none p-0" style="order: 8">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula2.jpg?v=1644204194"
+        alt="Pink Formula"
+        class="w-100"
+      />
+    </div>
+  </div>
+</section>
