@@ -173,7 +173,7 @@
                   <ul class="list-unstyled">
                     {% for variant in product.variants %}
                       <li>
-                        <button type="button" class="product-variant {% if variant == current_variant %}product-variant-selected{% endif %} {% unless variant.available %}product-variant-disabled{% endunless %}" data-variant-id="{{ variant.id }}" data-size-country="EU" available="{{ variant.available }}" {% unless variant.available %} disabled {% endunless %}>
+                        <button type="button" class="product-variant {% if variant == current_variant %}product-variant-selected{% endif %} {% unless variant.available %}product-variant-disabled{% endunless %}" data-variant-id="{{ variant.id }}" data-size-country="EU" available="{{ variant.available }}" price="{{ variant.price | money }}" {% unless variant.available %} disabled {% endunless %}>
                           {{ variant.title }}
                         </button>
                       </li>
