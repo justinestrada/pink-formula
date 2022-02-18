@@ -425,6 +425,13 @@ const Product = {
       this.sizeChart();
       ProductSizeByCountry.onLoad();
       this.onMobileProductTabClick();
+      this.onProductLoad();
+    }
+  },
+  onProductLoad: function() {
+    const selected_variant = $("button.product-variant.product-variant-selected");
+    if(selected_variant.length) {
+      Product.selectVariant(selected_variant);
     }
   },
   onWindowResize: function () {
@@ -477,6 +484,8 @@ const Product = {
     const variant_id = $this.attr('data-variant-id');
     $('#variant-id').val(variant_id);
     const available = $this.attr('available');
+    console.log($this.attr('price'))
+    $('span[data-price-wrapper]').html($this.attr('price'))
     if (available === 'true') {
       $('.product-add-to-cart-container').prop('disabled', false).removeAttr('diabled');
       $('.product-add-to-cart-container .btn:first-child').text('Add to bag');
