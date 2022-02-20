@@ -329,14 +329,14 @@ a {
   border-color: $primary;
   background-color: $primary;
 
-  &:hover,
+  /* &:hover,
   &:focus,
   &:active {
     border-color: $primary !important;
     background-color: $white !important;
     color: $primary !important;
     box-shadow: none !important;
-  }
+  } */
 
   &:active {
     background-color: $primary !important;
@@ -346,6 +346,22 @@ a {
   &:focus-visible {
     outline: none !important;
   }
+}
+
+.myAccount .btn-primary {
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $primary !important;
+    background-color: $white !important;
+    color: $primary !important;
+    box-shadow: none !important;
+  }
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #d30368;
 }
 
 .btn-outline-primary {
