@@ -18,8 +18,10 @@ $theme-colors: (
 
 // Colors
 $primary: #d4086b;
-$secondary: #0f0f0f;
-$black: #0f0f0f;
+// $secondary: #0f0f0f;
+// $black: #0f0f0f;
+$secondary: #2c373d;
+$black: #2c373d;
 $dark-grey: #595959;
 $light-grey: #eaeaea;
 $white: #fff;
@@ -329,14 +331,14 @@ a {
   border-color: $primary;
   background-color: $primary;
 
-  &:hover,
+  /* &:hover,
   &:focus,
   &:active {
     border-color: $primary !important;
     background-color: $white !important;
     color: $primary !important;
     box-shadow: none !important;
-  }
+  } */
 
   &:active {
     background-color: $primary !important;
@@ -346,6 +348,22 @@ a {
   &:focus-visible {
     outline: none !important;
   }
+}
+
+.myAccount .btn-primary {
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $primary !important;
+    background-color: $white !important;
+    color: $primary !important;
+    box-shadow: none !important;
+  }
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #d30368;
 }
 
 .btn-outline-primary {
@@ -385,6 +403,10 @@ a {
 
 .bg-secondary {
   background-color: $secondary !important;
+}
+
+.bg-light-gray {
+  background-color: $light-grey !important;
 }
 
 .bg-black {

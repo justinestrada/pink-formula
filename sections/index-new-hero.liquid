@@ -1,0 +1,126 @@
+<style>
+#home-hero .hero-container {
+  position: relative;
+}
+.bg-triangle-pattern {
+  background-image: url('https://cdn.shopify.com/s/files/1/0616/4027/8262/files/triangle-pattern.jpg?v=1645334554');
+  background-size: contain;
+  background-repeat: repeat;
+}
+.new-home-hero_go-pink-text {
+  font-size: 32px;
+  font-weight: bold;
+}
+.btn-skew {
+  transform: skewX(-20deg);
+  margin-left: 0.75rem;
+}
+.btn-skew span {
+  transform: skewX(20deg);
+  display: block;
+}
+@media (min-width: 1400px) {
+  .container_large {
+    max-width: 1320px;
+  }
+}
+.new-home-hero_zero-res-solution {
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+@media (min-width: 1600px) {
+  .container_large {
+    max-width: 1500px;
+  }
+}
+.btn-new-hero_special {
+  line-height: 32px;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 0.75rem 48px;
+}
+.btn-new-hero_special span {
+  position: relative;
+  top: 2px  
+}
+.btn-new-hero_special::before {
+  content: "";
+  background-color: white;
+  width: 0.75rem;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: -1.25rem;
+}
+.btn-new-hero_special::after {
+  content: "";
+  background-color: white;
+  width: 0.5rem;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: -2.25rem;
+}
+</style>
+<img src="https://cdn.shopify.com/s/files/1/0616/4027/8262/files/PinkFormula-Website-Banner-1.jpg?v=1645333274" alt="Pink Formula" class="w-100"/>
+<section id="home-hero">
+  <div class="container container_large">
+    <div class="row">
+      <div class="col-lg-6 d-flex align-items-center py-4 px-0">
+        <div>
+          <img src="https://cdn.shopify.com/s/files/1/0616/4027/8262/files/Pink_Formula_Final_Logo_1.svg?v=1645335923" alt="" class="w-100"/>
+          <div class="new-home-hero_zero-res-solution text-center text-primary">Zero Res Solution</div>
+        </div>
+      </div>
+      <div class="col-lg-6 py-4 pr-0">
+        <img src="https://cdn.shopify.com/s/files/1/0616/4027/8262/files/PF-Banner-Products.png" alt="" class="w-100"/>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 bg-triangle-pattern">
+    <div class="container container_large">
+      <div class="row">
+        <div class="d-flex align-items-center col-lg-6 text-white">
+          <div class="new-home-hero_go-pink-text">#GOPINK</div>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-end">
+          <a href="https://pinkformula.co/collections/all" class="btn btn-white btn-skew btn-new-hero_special">
+            <span>BUY NOW</span>
+          </a>
+        </div>
+      </div>
+    </div>  
+  </div>
+  {% comment %}
+  <div id="hero-container_mobile" class="d-flex d-lg-none flex-column">
+    <div class="hero-container_mobile d-flex flex-column justify-content-center align-items-center text-center"
+      style="background-image: url('{{ section.settings.mobile_background_1 | img_url: 'master' }}')">
+      <h1 class="text-white font-weight-normal">{{ section.settings.title }}</h1>
+    </div>
+  </div>
+  <div  class="cta-btn-container flex-row d-flex d-lg-none justify-content-center align-items-center" id="cta-btn">
+    <a href="{{ section.settings.hero_link1 }}" title="{{ section.settings.hero_left_button_text }}" class="btn btn-primary d-flex align-items-center justify-content-center">
+      {{ section.settings.hero_left_button_text }}
+    </a>
+    <a href="{{ section.settings.hero_link2 }}" title="{{ section.settings.hero_right_button_text }}" class="btn btn-white d-flex align-items-center justify-content-center">
+      {{ section.settings.hero_right_button_text }}
+    </a>
+  </div>
+  {% endcomment %}
+</section>
+
+{% schema %}
+{
+  "name": "New Hero",
+  "settings": [
+  ],
+  "presets": [
+    {
+      "name": "New Hero",	
+      "category": "Layout"
+    }
+  ]
+}
+{% endschema %}

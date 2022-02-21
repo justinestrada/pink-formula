@@ -43,6 +43,11 @@
     order: 7;
   }
 }
+@media (min-width: 1200px) {
+  .card-body {
+    font-size: 1.25rem;
+  }
+}
 </style>
 <section id="index_full-width-grid" class="container-fluid">
   <div class="row">
@@ -53,8 +58,8 @@
             <img src="{{ block.settings.image | img_url: 'master' }}" alt="" class="w-100"/>
           {% endif %}
           {% if block.settings.text != '' %}
-            <div class="card bg-primary h-100">
-              <div class="card-body">
+            <div class="card bg-light-gray h-100">
+              <div class="card-body text-black">
                 {{ block.settings.text | html }}
               </div>
             </div>
