@@ -1,49 +1,49 @@
 <style>
-  #index_full-width-grid .card {
-    width: 100%;
-    min-height: 256px;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    flex-direction: column;
+#index_full-width-grid .card {
+  width: 100%;
+  min-height: 256px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+}
+#index_full-width-grid .card .card-body {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+@media (max-width: 767px) {
+  #index_full-width-grid [class*="col"]:nth-child(5) {
+    order: 8;
   }
-  #index_full-width-grid .card .card-body {
-    display: flex;
-    align-items: center;
-    color: white;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #index_full-width-grid [class*="col"]:nth-child(3) {
+    /* image */
+    order: 4;
   }
-  @media (max-width: 767px) {
-    #index_full-width-grid [class*="col"]:nth-child(5) {
-      order: 8;
-    }
+  #index_full-width-grid [class*="col"]:nth-child(4) {
+    order: 3;
   }
-  @media (min-width: 768px) and (max-width: 991px) {
-    #index_full-width-grid [class*="col"]:nth-child(3) {
-      /* image */
-      order: 4;
-    }
-    #index_full-width-grid [class*="col"]:nth-child(4) {
-      order: 3;
-    }
-    #index_full-width-grid [class*="col"]:nth-child(5) {
-      order: 6;
-    }
-    #index_full-width-grid [class*="col"]:nth-child(6) {
-      order: 5;
-    }
-    #index_full-width-grid [class*="col"]:nth-child(7) {
-      order: 7;
-    }
-    #index_full-width-grid [class*="col"]:nth-child(8) {
-      order: 8;
-    }
+  #index_full-width-grid [class*="col"]:nth-child(5) {
+    order: 6;
   }
-  @media (min-width: 992px) and (max-width: 1199px) {
-    #index_full-width-grid [class*="col"]:nth-child(5) {
-      order: 7;
-    }
+  #index_full-width-grid [class*="col"]:nth-child(6) {
+    order: 5;
   }
+  #index_full-width-grid [class*="col"]:nth-child(7) {
+    order: 7;
+  }
+  #index_full-width-grid [class*="col"]:nth-child(8) {
+    order: 8;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  #index_full-width-grid [class*="col"]:nth-child(5) {
+    order: 7;
+  }
+}
 </style>
 <section id="index_full-width-grid" class="container-fluid">
   <div class="row">
@@ -54,10 +54,9 @@
         class="w-100"
       />
     </div>
-
     <div class="col-md-6 col-lg-4 col-xl-3 p-0">
-      <div class="card bg-primary h-100">
-        <div class="card-body">
+      <div class="card bg-light-gray h-100">
+        <div class="card-body text-black">
           <p>
             "Best product I've tried! Easy to use, effective, and no residue
             left behind. Brings old pipes back to brand new almost instantly!"
@@ -66,7 +65,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-6 col-lg-4 col-xl-3 p-0">
       <img
         src="//cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula1.jpg?v=1644204194"
@@ -74,10 +72,9 @@
         class="w-100"
       />
     </div>
-
     <div class="col-md-6 col-lg-4 col-xl-3 p-0">
-      <div class="card bg-primary h-100">
-        <div class="card-body">
+      <div class="card bg-light-gray h-100">
+        <div class="card-body text-black">
           <p>
             "After trying this product, I don’t see myself using any others.
             Instructions are super easy to follow, the process is very quick and
@@ -87,10 +84,9 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-6 col-lg-4 col-xl-3 p-0">
-      <div class="card bg-primary h-100">
-        <div class="card-body">
+      <div class="card bg-light-gray h-100">
+        <div class="card-body text-black">
           <p>
             "This stuff is magic. I have tried everything to clean my hookah
             bowl - vinegar &amp; baking soda, disinfectants, even bleach!
@@ -102,7 +98,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-6 col-lg-4 col-xl-3 p-0">
       <img
         src="//cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula4.jpg?v=1644204194"
@@ -110,10 +105,9 @@
         class="w-100"
       />
     </div>
-
     <div class="col-md-6 col-lg-4 col-xl-3 p-0">
-      <div class="card bg-primary h-100">
-        <div class="card-body">
+      <div class="card bg-light-gray h-100">
+        <div class="card-body text-black">
           <p>
             "I own a couple smoke shops, my customers that have tried this
             product came back for more. They rave at how fast it works it cleans
@@ -123,7 +117,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-6 col-lg-4 col-xl-3 p-0">
       <img
         src="//cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula3.jpg?v=1644204194"
@@ -131,7 +124,6 @@
         class="w-100"
       />
     </div>
-
     <div class="d-none d-lg-block col-lg-4 d-xl-none p-0" style="order: 8">
       <img
         src="https://cdn.shopify.com/s/files/1/0616/4027/8262/files/pink-formula2.jpg?v=1644204194"
