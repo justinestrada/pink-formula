@@ -103,9 +103,11 @@
                         <a class="nav-item nav-link {% if forloop.index == 1 %} active {% endif %}" id="nav-{{ forloop.index }}-tab" data-toggle="tab" href="#nav-{{ forloop.index  }}" role="tab" aria-controls="nav-{{ forloop.index  }}" aria-selected="{% if forloop.index == 1 %}true{% else %}false{% endif %}">{{ head }}<span class="icon plus">+</span><span class="icon minus">-</span></a>
                       {% endfor %}
                       <a class="nav-item nav-link" id="nav-shipping-returns-tab" data-toggle="tab" href="#nav-shipping-returns" role="tab" aria-controls="nav-shipping-returns" aria-selected="false">Shipping and Returns<span class="icon plus">+</span><span class="icon minus">-</span></a>
+                      {% comment %}
                       {% unless in_accessories_collection %}
                         <a class="nav-item nav-link" id="nav-size-chart-tab" data-toggle="tab" href="#nav-size-chart" role="tab" aria-controls="nav-size-chart" aria-selected="false">Size Chart<span class="icon plus">+</span><span class="icon minus">-</span></a>
                       {% endunless %}
+                      {% endcomment %}
                     </div>
                   </nav>
                   <div class="tab-content mb-4" id="nav-tabContent">
@@ -272,6 +274,7 @@
                         </div>
                       </div>
                     {% endif %}
+                    {% comment %}
                     {% unless in_accessories_collection %}
                       <div class="description mb-3">
                         <div class="description-header" id="tab-heading-size-chart">
@@ -288,6 +291,7 @@
                         </div>
                       </div>
                     {% endunless %}
+                    {% endcomment %}
                   </div>
                 </div>
               {% endif %}
