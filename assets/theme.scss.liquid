@@ -289,6 +289,22 @@ $xxl: 1200px;
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Aero Matics Bold Italic";
+  src: url("{{ 'AeroMatics-BoldItalic.woff2' | asset_url }}") format("woff2"),
+    url("{{ 'AeroMatics-BoldItalic.woff' | asset_url }}") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+.font-family_aero-matics-bold-italic {
+  font-family: 'Aero Matics Bold Italic';
+}
+
+.font-family_aero-matics-bold-italic_important {
+  font-family: 'Aero Matics Bold Italic' !important;
+}
+
 * {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
