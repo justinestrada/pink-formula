@@ -3,31 +3,28 @@
 .home-full-width-container {
   position: relative;
 }
-/*
-.home-full-width-container::before {
+.home-full-width-container_white-bg::before {
   content: "";
   display: block;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.325);
+  background-color: rgba(255, 255, 255, 0.625);
   width: 100%;
   height: 100%;
 }
-*/
 .home-full-width-container > div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 </style>
-<section class="home-full-width-container cta-container d-flex flex-column justify-content-center align-items-center text-black text-center">
+<section class="home-full-width-container home-full-width-container_white-bg cta-container d-flex flex-column justify-content-center align-items-center text-black text-center bg-white" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}">
   <div style="position: relative;">
     <h2 class="pb-4 font-weight-normal">{{ section.settings.title }}</h2>
-    <div class="body-large pb-4">{{ section.settings.description }}</div>
-    <a href="{{ section.settings.call_to_action }}" title="{{ section.settings.call_to_action_label }}" class="btn btn-link text-black d-flex flex-row align-items-center justify-content-center">
-      <img class="mr-2" src="{{ 'subdirectory-arrow-right.svg' | asset_url }}">
-      <div>{{ section.settings.call_to_action_label }}</div>
+    <div class="body-large fs-1.125x pb-4">{{ section.settings.description }}</div>
+    <a href="{{ section.settings.call_to_action }}" class="btn btn-primary btn-skew btn-special text-uppercase" style="margin-left: 0;">
+      <span class="font-family_aero-matics-bold-italic_important">{{ section.settings.call_to_action_label }}</span>
     </a>
   </div>
 </section>
@@ -36,6 +33,11 @@
 {
   "name": "Full Width White BG",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
     {
       "type": "text",
       "id": "title",

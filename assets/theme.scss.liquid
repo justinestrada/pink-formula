@@ -292,7 +292,8 @@ $xxl: 1200px;
 @font-face {
   font-family: "Aero Matics Bold Italic";
   src: url("{{ 'AeroMatics-BoldItalic.woff2' | asset_url }}") format("woff2"),
-    url("{{ 'AeroMatics-BoldItalic.woff' | asset_url }}") format("woff");
+       url("{{ 'AeroMatics-BoldItalic.woff' | asset_url }}") format("woff"),
+       url("{{ 'AeroMatics-BoldItalic.ttf' | asset_url }}") format("ttf");
   font-weight: bold;
   font-style: italic;
 }
@@ -1388,6 +1389,10 @@ footer {
     padding: 72px;
   }
 
+  .btn-primary:hover {
+    border-color: #d30368;
+  }
+
   .btn-link,
   a {
     color: $white;
@@ -1581,6 +1586,10 @@ footer {
   color: $primary;
 }
 
+.btn-primary:hover {
+  border-color: $primary;
+}
+
 #btt-btn {
   display: none;
   position: fixed;
@@ -1623,6 +1632,41 @@ footer {
     position: relative;
     transition: transform 0.3s ease;
     transform: translateX(0px);
+  }
+}
+
+.btn-special {
+  line-height: 32px;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 0.75rem 48px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    top: 0;
+  }
+
+  &::before {
+    width: 0.75rem;
+    right: -1.25rem;
+  }
+
+  &::after {
+    width: 0.5rem;
+    right: -2.25rem;
+  }
+
+  &.btn-white::before,
+  &.btn-white::after {
+    background-color: $white;
+  }
+
+  &.btn-primary::before,
+  &.btn-primary::after {
+    background-color: $primary;
   }
 }
 
