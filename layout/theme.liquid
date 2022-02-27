@@ -92,6 +92,16 @@
   {% endif %}
 
   {{ content_for_header }}
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-81D196P0TL"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-81D196P0TL');
+  </script>
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
