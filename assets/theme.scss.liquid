@@ -3831,7 +3831,7 @@ symbol {
   color: #0f0f0f;
 
   &.loud-text-blue {
-    background: #d4086b;
+    background: $primary;
     color: $white;
   }
 
@@ -4366,11 +4366,29 @@ iframe#launcher {
 /* Kudobuzz */
 //
 button.kb-button {
-  background: #d4086b;
+  background: $primary;
   color: white !important;
   border-radius: 0 !important;
 }
 
 *:not(.template-product) #kudobuzz_neptune_widget {
-display: none;
+  display: none;
+}
+
+a.card_product {
+  color: $secondary;
+}
+
+a.card_product:hover {
+  text-decoration: none;
+}
+
+.card_product {
+  border: 1px solid $secondary;
+}
+
+.card_product .reviews {
+  color: #faca42;
+  font-size: 12px;
+  margin-bottom: 0.75rem;
 }

@@ -1,0 +1,70 @@
+
+<section class="index-product-collection">
+  {% assign collection = collections[section.settings.collection] %}
+  <div class="container py-5">
+    <div class="row">
+      {% if collection.products %}
+        {% for product in collection.products %}
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a href="{{ product.url }}" class="card card_product h-100">
+              <img class="card-img-top" src="{{ product.featured_image.src | img_url: '1920x' }}" alt="{{ product.title }}"/>
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <div class="reviews">
+                  {% for i in (1..5) %}
+                    <i class="fa fa-star"></i>
+                  {% endfor %}
+                </div>
+                <p class="card-text">
+                  {% if product.compare_at_price > product.price %}
+                    {% if product.price_varies %}
+                      {%- assign sale_price = product.price | money -%}
+                      <span class="sr-only"></span>{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
+                    {% else %}
+                      <span class="sr-only">{{ 'products.product.on_sale' | t }}</span>
+                      {{ product.price | money }}
+                    {% endif %}
+                  {% else %}
+                    {% if product.price_varies %}
+                      {%- assign price = product.price | money -%}
+                      {{ 'products.product.from_text_html' | t: price: price }}
+                    {% else %}
+                      {{ product.price | money }}
+                    {% endif %}
+                  {% endif %}
+                  {% if product.compare_at_price > product.price %}
+                    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                    <s><small>{{ product.compare_at_price | money }}</small></s>
+                  {% endif %}
+                </p>
+                <button type="button" class="btn btn-outline-primary btn-skew">
+                  <span class="font-family_aero-matics-bold-italic_important text-uppercase">Shop</span>
+                </button>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+

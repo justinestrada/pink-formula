@@ -9,16 +9,18 @@
     <div class="d-none d-lg-flex col-lg-4 justify-content-center align-items-center">
       <h1 class="page-heading-sm mb-0">{{ collection.title }}</h1>
     </div>
+    {% comment %}
     {% if collection.all_tags.size > 0 %}
       <div class="col col-lg-4 col-xl-3 text-right">
-        {% comment %}<button id="toggle-filters" class="btn mr-1 mr-lg-3">Filters <span id="plus">&#43;</span><span id="minus"
-            class="d-none">&#8722;</span></button> {% endcomment %}
+        <button id="toggle-filters" class="btn mr-1 mr-lg-3">Filters <span id="plus">&#43;</span><span id="minus"
+            class="d-none">&#8722;</span></button>
         <button id="toggle-view" class="btn text-primary">
           <i class="fa" aria-hidden="true" id="toggle_icon"></i>
           <span class="sr-only">Toggle View</span>
         </button>
       </div>
     {% endif %}
+    {% endcomment %}
   </div>
 </header>
 {% if collection.all_tags.size > 0 %}
@@ -26,14 +28,13 @@
     <div class="tags tags-hidden d-none">
       {% for tag in collection.all_tags %}
         {% if current_tags contains tag %}
-        <div class="tag-container active">
-          {{ tag | link_to_remove_tag: tag }}
-        </div>
+          <div class="tag-container active">
+            {{ tag | link_to_remove_tag: tag }}
+          </div>
         {% else %}
-        
-        <div class="tag-container">
-          {{ tag | link_to_add_tag: tag }}
-        </div>
+          <div class="tag-container">
+            {{ tag | link_to_add_tag: tag }}
+          </div>
         {% endif %}
       {% endfor %}
     </div>
