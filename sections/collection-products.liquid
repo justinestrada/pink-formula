@@ -1,10 +1,12 @@
 
-<section id="collection-products" class="container-fluid">
+<section id="collection-products" class="container">
   {% paginate collection.products by 12 %}
     {% if collection.products.size > 0 %}
-      <div class="collection-products row">
+      <div class="collection-products row mb-5">
         {% for product in collection.products %}
-          {% include 'collection-product' %}
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            {% include 'collection-product' %}
+          </div>
         {% endfor %}
       </div>
     {% else %}

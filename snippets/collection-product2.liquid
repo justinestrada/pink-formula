@@ -1,0 +1,105 @@
+
+{% comment %}
+{% assign sizes = '' %}
+{% assign outofstock = false %}
+
+{% for tag in current_tags %}
+  {% assign tagSubString = tag | slice: 3 %}
+    {% if tagSubString == 'Size' %}
+      {% assign outofstock = true %}
+    {% endif %}
+{% endfor %}
+
+{% for variant in product.variants %}
+  {% if variant.available %}
+    {% assign sizes = sizes | append: variant.options[0] | append: ' ' %}
+    {% assign variantSize = variant.options[0] | prepend: 'Size: ' %}
+    {% if current_tags contains variantSize %}
+      {% assign outofstock = false %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if outofstock == false %}
+{% endif %}
+{% endcomment %}
+
+{% unless collection_product_column %} 
+  {% assign collection_product_column = 'col-12 col-lg-4' %}
+{% endunless %}
+
+<div class="collection-product-container product-single_hoverable-image_container {{ collection_product_column }}" data-product-id="{{ product.id }}">
+  <div class="collection-product img-card" style="background-image: url('{{ product.featured_image.src | img_url: '800x800' }}')">
+  </div>
+  <div class="collection-product info-card" style="background-image: url('{% if product.images.size == 1 %} {{ product.featured_image.src | img_url: '800x800' }} {% else %} {{ product.images[1].src | img_url: '800x800' }}}} {% endif %}')">
+    <div class="row">
+      {% comment %}
+      <div class="info-details top_left col-3 px-0">
+        {% include 'btn-wishlist' %}
+      </div>
+      {% endcomment %}
+      <div class="info-details top_center col-6 px-md-0">
+        <a href="{{ product.url | within: collection }}" class="text-secondary">
+          {{ product.title }}
+        </a>
+      </div>
+      <div class="info-details top_right text-right col-3 px-0">
+        {% if product.compare_at_price > product.price %}
+          {% if product.price_varies %}
+            {%- assign sale_price = product.price | money -%}
+            <span class="sr-only"></span>{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
+          {% else %}
+            <span class="sr-only">{{ 'products.product.on_sale' | t }}</span>
+            {{ product.price | money }}
+          {% endif %}
+        {% else %}
+          {% if product.price_varies %}
+            {%- assign price = product.price | money -%}
+            {{ 'products.product.from_text_html' | t: price: price }}
+          {% else %}
+            {{ product.price | money }}
+          {% endif %}
+        {% endif %}
+        {% if product.compare_at_price > product.price %}
+          <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+          <s><small>{{ product.compare_at_price | money }}</small></s>
+        {% endif %}
+      </div>
+    </div>
+    <a href="{{ product.url | within: collection }}" class="click-box" title="{{ product.title }}"></a>
+    <!-- d-none d-md-flex -->
+    <div class="info-details bottom_center d-flex flex-row align-content-center justify-content-center px-1">
+      {% assign bottom_cta_text = 'View' %}
+      {% if product.variants.size > 1 %}
+        {% assign bottom_cta_text = 'Choose your size' %}
+      {% endif %}
+      <a href="{{ product.url | within: collection }}" title="{{ product.title }}">
+        <p class="m-0">{{ bottom_cta_text }} <img src="{{ 'arrow-round-right_black.svg' | asset_url }}" alt="Right arrow" class="arrow-right"></p>
+      </a>
+      {% if product.variants.size > 1 %}
+        {% for variant in product.variants %}{% comment %} limit:4 {% endcomment %}
+          {% if variant.available %}
+            <a href="{{ product.url | within: collection }}?variant={{ variant.id }}" >
+              {%- if variant.options.size > 1 -%}
+                {{ variant.options[1] }}
+              {%- else -%}
+                {{ variant.options[0] }}
+              {%- endif -%}
+            </a>
+          {% comment %}
+          {% else %}
+            <span title="Sold Out">
+              {%- if variant.options.size > 1 -%}
+                {{ variant.options[1] }}
+              {%- else -%}
+                {{ variant.options[0] }}
+              {%- endif -%}
+            </span>
+          {% endcomment %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  {% include 'swym-product-view', product: product %}
+</div>

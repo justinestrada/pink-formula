@@ -19,7 +19,7 @@
                   {% if product.compare_at_price > product.price %}
                     {% if product.price_varies %}
                       {%- assign sale_price = product.price | money -%}
-                      <span class="sr-only"></span>{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
+                      <span class="sr-only">{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
                     {% else %}
                       <span class="sr-only">{{ 'products.product.on_sale' | t }}</span>
                       {{ product.price | money }}

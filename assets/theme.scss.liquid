@@ -348,6 +348,16 @@ a {
   color: $primary;
 }
 
+.btn-skew {
+  transform: skewX(-20deg);
+  margin-left: 0.75rem;
+
+  span {
+    transform: skewX(20deg);
+    display: block;
+  }
+}
+
 .btn-primary {
   border-color: $primary;
   background-color: $primary;
@@ -4389,10 +4399,14 @@ a.card_product:hover {
 
 .card_product {
   border: 1px solid $secondary;
-}
 
-.card_product .reviews {
-  color: #faca42;
-  font-size: 12px;
-  margin-bottom: 0.75rem;
+  .card-title {
+    color: $secondary;
+  }
+
+  .reviews {
+    color: #faca42;
+    font-size: 12px;
+    margin-bottom: 0.75rem;
+  }
 }
