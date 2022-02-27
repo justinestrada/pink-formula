@@ -187,18 +187,18 @@
               <input type="hidden" id="Quantity" name="quantity" value="1" min="1"/>
               <button class="product-add-to-cart-container" type="submit" name="add" data-submit-button {% unless current_variant.available %}disabled="disabled"{% endunless %}>
                 <span class="flex-row d-flex justify-content-center align-items-center" data-submit-button-text>
-                  <span class="btn btn-primary d-flex align-items-center justify-content-center">
+                  <span class="btn btn-primary d-flex align-items-center justify-content-center font-family_aero-matics-bold-italic_important text-uppercase">
                     {% if is_preorder == true %}
                       Pre-order
                     {% else %}
                       {% if current_variant.available %}
-                        Add to bag
+                        Add To Cart
                       {% else %}
                         {{ 'products.product.sold_out' | t }}
                       {% endif %}
                     {% endif %}
                   </span>
-                  <span class="btn btn-black d-flex align-items-center justify-content-center">
+                  <span class="btn btn-black d-flex align-items-center justify-content-center font-family_aero-matics-bold-italic_important">
                     <span data-price-wrapper>
                       {% comment %}
                       <span data-product-price>
