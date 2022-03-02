@@ -924,6 +924,9 @@ html {
 
 .page-heading-sm {
   font-size: 21px;
+  font-family: 'Aero Matics Bold Italic' !important;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .page-heading-light {
@@ -1120,6 +1123,10 @@ div {
         a.nav-link {
           color: $secondary;
           font-size: 1rem;
+          font-family: 'Aero Matics Bold Italic' !important;
+          font-weight: bold;
+          font-style: italic;
+          text-transform: uppercase;
         }
 
         a.nav-link:hover {
@@ -1134,8 +1141,13 @@ div {
       color: $primary;
     }
 
-    [data-target="#cartSidebar"] {
+    [data-target="#cartSidebar"],
+    #myAccountBtn {
       display: inline-block;
+      font-family: 'Aero Matics Bold Italic' !important;
+      font-weight: bold;
+      font-style: italic;
+      text-transform: uppercase;
     }
   }
 }
@@ -3082,6 +3094,10 @@ symbol {
 //
 //
 #cartSidebar {
+  .my-cart-header {
+    font-size: 14px;
+  }
+
   #form-cart {
     height: calc(100vh - 28px);
     display: flex;
@@ -4317,11 +4333,6 @@ iframe#launcher {
 //
 
 .container-wholesale_from {
-  width:100%;
-  max-width: 600px;
-  margin: 10px auto;
-  display: block;
-
   .input-group {
     margin-bottom: 1rem;
     border-bottom: 0px;
@@ -4394,10 +4405,11 @@ a.card_product:hover {
 }
 
 .card_product {
-  border: 1px solid $secondary;
+  border: 0.2rem solid #ddd;
 
   .card-title {
     color: $secondary;
+    min-height: 40px;
   }
 
   .reviews {
