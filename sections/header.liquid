@@ -77,7 +77,7 @@ Theme Store optional settings
           <div class="navbar__right">
             <button type="button" class="btn btn-transparent my-2 my-sm-0" data-toggle="modal" data-target="#cartSidebar" {% if template.name == 'cart' or cart.item_count == 0 %} style="display: none;" {% endif %}>
               <span class="cart-has-items">{{ cart.item_count }}</span>
-              <img src="{{ 'cart.svg' | asset_url }}" alt="Cart" style="height: 2rem;"/>
+              <img src="{{ 'cart.svg' | asset_url }}" alt="Cart" style="position: relative; top: -2px; height: 24px;"/>
               {{ 'layout.cart.title' | t }}
             </button>
             {% comment %}

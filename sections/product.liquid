@@ -66,6 +66,13 @@
   color: #0f0f0f;
   font-size: 0.875rem;
 }
+@media (min-width: 992px) {
+  #product-single img.product-single__thumbnail-image {
+    max-width: 512px;
+    margin: 0 auto;
+    display: block;
+  }
+}
 </style>
 
 <section id="product-single" data-section-id="{{ section.id }}" data-section-type="product" class="pt-0"><!-- padding-top-lg padding-bottom-lg -->
@@ -141,9 +148,8 @@
               <div class="mb-4">
                 {% include 'btn-wishlist' %}
               </div>
-              {% endcomment %}
               <h1 class="font-family_aero-matics-bold-italic_important mb-4">{{ product.title }}</h1>
-              {% comment %} Inventory tracking on product page 
+              <!-- Inventory tracking on product page -->
               <div id="variant-inventory" class="{% unless current_variant.available %} hide {% endunless %}">
                 {{ current_variant.inventory_quantity }} in stock.
               </div>

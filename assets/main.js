@@ -415,18 +415,20 @@ const CollectionLoadMore = {
 */
 const Product = {
   onLoad: function () {
-    if ($('.template-product')) {
-      this.setInnerProductBodyMargins();
-      this.setProductFooter();
-      this.onWindowResize();
-      this.setEmbedResponsive();
-      this.onProductDescriptionExpand();
-      this.onVariantSelect();
-      this.sizeChart();
-      ProductSizeByCountry.onLoad();
-      this.onMobileProductTabClick();
-      this.onProductLoad();
+    if (!$('.template-product')) {
+      return
     }
+    this.setInnerProductBodyMargins()
+    this.setProductFooter()
+    this.onWindowResize()
+    this.setEmbedResponsive()
+    this.onProductDescriptionExpand()
+    this.onVariantSelect()
+    this.sizeChart()
+    ProductSizeByCountry.onLoad()
+    this.onMobileProductTabClick()
+    this.onProductLoad()
+    this.onKudobuzzLoad()
   },
   onProductLoad: function() {
     const selected_variant = $("button.product-variant.product-variant-selected");
@@ -559,7 +561,21 @@ const Product = {
       }
     });
   },
-};
+  onKudobuzzLoad: function() {
+    if (!$('[data-kb-widget-type="kb-product-widget"]').length) {
+      return
+    }
+    // Reformat review dates
+    setTimeout(() => {
+      $('#kb-product-widget ._1FHaQ').each(function() {
+        let incorrect_date = $(this).text()
+        incorrect_date = incorrect_date.split('.')
+        let correct_date = `${incorrect_date[1]}/${incorrect_date[0]}/${incorrect_date[2]}`
+        $(this).text(correct_date)
+      })
+    }, 2500)
+  },
+}
 
 const ProductSizeByCountry = {
   sizes: [
